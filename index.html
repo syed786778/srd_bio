@@ -57,7 +57,7 @@
     border-bottom: 1px solid rgba(176,141,87,0.15);
     transition: all 0.3s ease;
   }
-  .nav-logo { font-family: var(--serif); font-size: 1.4rem; font-weight: 500; color: var(--charcoal); letter-spacing: 0.01em; }
+  .nav-logo { font-family: var(--serif); font-size: 1.4rem; font-weight: 500; color: var(--charcoal); letter-spacing: 0.01em; display: inline-block; cursor: pointer; }
   .nav-logo span { color: var(--gold); }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
@@ -535,10 +535,11 @@
 </style>
 </head>
 <body>
+<div id="top"></div>
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Syed <span>Rashad</span></div>
+  <a href="#top" class="nav-logo" style="text-decoration:none;">Syed <span>Rashad</span></a>
   <ul class="nav-links">
     <li><a href="#journey">Journey</a></li>
     <li><a href="#builds">Builds</a></li>
@@ -561,7 +562,7 @@
       Ops Architect.
     </h1>
     <p class="hero-subtitle">
-      10+ years of building customer-first systems, scaling operations, and deploying AI to solve real problems — from zero to scale, across startups in fintech, wealthtech, hospitality & home design.
+      10+ years of building customer-first systems, scaling operations, and deploying AI to solve real problems — from zero to scale, across startups in fintech, wealthtech, hospitality & healthtech.
     </p>
     <div class="hero-tags">
       <span class="tag">Customer Experience</span>
@@ -611,12 +612,12 @@
           </div>
         </div>
         <div class="timeline-highlights">
-          <div class="highlight">Joined as one of the earliest founding members — worked directly alongside the founders to build the business from the ground up, contributing across strategy, operations, product and customer experience</div>
+          <div class="highlight">Joined as one of the earliest members — worked directly alongside the founders to build the business from the ground up, contributing across strategy, operations, product and customer experience</div>
           <div class="highlight">Architected the entire CX and operations infrastructure from scratch — no playbooks, no templates, just first-principles thinking and rapid iteration</div>
           <div class="highlight">Designed <strong>Orion</strong>, a unified internal platform integrating KYC, transactions, portfolio analytics and customer data — reduced tool dependency and accelerated feature deployment</div>
           <div class="highlight">Led mutual fund operations across 40+ AMCs and RTAs, including full integrations with BSE and MFU platforms — ensuring regulatory compliance at every step</div>
           <div class="highlight">Launched and scaled the Retirement Planning vertical from concept to execution: 25K+ leads generated, 3K+ advisory sessions conducted</div>
-          <div class="highlight">Built and deployed engagement workflows across WhatsApp and email — improved lead conversion by 14% and response efficiency significantly</div>
+          <div class="highlight">Built and deployed AI-assisted engagement workflows across WhatsApp and email — improved lead conversion by 14% and response efficiency significantly</div>
           <div class="highlight">Established QA frameworks, SOPs, and escalation protocols — consistently achieved &lt;6hr FRT, 90%+ SLA adherence, and 94%+ CSAT</div>
           <div class="highlight">Hired, mentored and built the CX team culture — instilling a customer-first mindset that scaled with the business from 1→10</div>
           <div class="highlight">Wore many hats: from ops and compliance to product feedback loops and business strategy — a true generalist in the startup trenches</div>
@@ -1096,6 +1097,10 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Force scroll to absolute top on fresh load
+  if (history.scrollRestoration) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+
   // Only animate if page has rendered (check after short delay)
   window.addEventListener('load', function() {
     const observer = new IntersectionObserver((entries) => {

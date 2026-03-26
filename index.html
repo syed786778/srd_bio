@@ -392,6 +392,47 @@
   .reveal.animate.visible { opacity: 1; transform: translateY(0); }
 
 
+
+  /* EDUCATION SECTION */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin-top: 3rem;
+  }
+  .edu-card {
+    background: var(--white);
+    border: 1px solid rgba(176,141,87,0.12);
+    border-radius: 14px;
+    padding: 1.4rem 1.6rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: all 0.25s ease;
+  }
+  .edu-card:hover {
+    border-color: rgba(176,141,87,0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+  }
+  .edu-card-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .edu-card-title {
+    font-family: var(--serif); font-size: 1rem; font-weight: 500;
+    color: var(--charcoal); line-height: 1.3; margin-bottom: 0.25rem;
+  }
+  .edu-card-inst { font-size: 0.75rem; color: var(--muted); }
+  .edu-card-type {
+    display: inline-block; margin-top: 0.5rem;
+    font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); background: rgba(176,141,87,0.08);
+    padding: 0.2rem 0.55rem; border-radius: 100px;
+  }
+  @media (max-width: 900px) { .edu-grid { grid-template-columns: 1fr 1fr; } }
+
   /* TESTIMONIALS */
   #testimonials { background: var(--cream); }
   .testimonials-grid {
@@ -503,6 +544,7 @@
     <li><a href="#builds">Builds</a></li>
     <li><a href="#testimonials">Voices</a></li>
     <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
     <li><a href="#passion">Passion</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -519,14 +561,14 @@
       Ops Architect.
     </h1>
     <p class="hero-subtitle">
-      10+ years of building customer-first systems, scaling operations, and deploying AI to solve real problems — from zero to scale, across startups in fintech, wealthtech, hospitality & Interior Designing.
+      10+ years of building customer-first systems, scaling operations, and deploying AI to solve real problems — from zero to scale, across startups in fintech, wealthtech, hospitality & home design.
     </p>
     <div class="hero-tags">
       <span class="tag">Customer Experience</span>
       <span class="tag">AI & Automation</span>
       <span class="tag">0 → 1 Building</span>
       <span class="tag">Fintech · WealthTech</span>
-      <span class="tag">Hospitality ·Marketplace</span>
+      <span class="tag">Hospitality · Home Tech</span>
     </div>
     <div class="hero-cta">
       <a href="#journey" class="btn-primary">Explore Journey</a>
@@ -568,11 +610,15 @@
           </div>
         </div>
         <div class="timeline-highlights">
-          <div class="highlight">Built CX & ops from ground up — onboarding to retention & compliance</div>
-          <div class="highlight">Designed Orion, a unified customer data & operations platform</div>
-          <div class="highlight">Launched Retirement Planning vertical: 25K+ leads, 3K+ advisory sessions</div>
-          <div class="highlight">Deployed AI-assisted engagement workflows across WhatsApp & email</div>
-          <div class="highlight">Achieved &lt;6hr FRT, 90% SLA, 94%+ CSAT through SOPs & QA frameworks</div>
+          <div class="highlight">Joined as one of the earliest members — worked directly alongside the founders to build the business from the ground up, contributing across strategy, operations, product and customer experience</div>
+          <div class="highlight">Architected the entire CX and operations infrastructure from scratch — no playbooks, no templates, just first-principles thinking and rapid iteration</div>
+          <div class="highlight">Designed <strong>Orion</strong>, a unified internal platform integrating KYC, transactions, portfolio analytics and customer data — reduced tool dependency and accelerated feature deployment</div>
+          <div class="highlight">Led mutual fund operations across 40+ AMCs and RTAs, including full integrations with BSE and MFU platforms — ensuring regulatory compliance at every step</div>
+          <div class="highlight">Launched and scaled the Retirement Planning vertical from concept to execution: 25K+ leads generated, 3K+ advisory sessions conducted</div>
+          <div class="highlight">Built and deployed AI-assisted engagement workflows across WhatsApp and email — improved lead conversion by 14% and response efficiency significantly</div>
+          <div class="highlight">Established QA frameworks, SOPs, and escalation protocols — consistently achieved &lt;6hr FRT, 90%+ SLA adherence, and 94%+ CSAT</div>
+          <div class="highlight">Hired, mentored and built the CX team culture — instilling a customer-first mindset that scaled with the business from 1→10</div>
+          <div class="highlight">Wore many hats: from ops and compliance to product feedback loops and business strategy — a true generalist in the startup trenches</div>
         </div>
       </div>
     </div>
@@ -633,7 +679,7 @@
           <div class="company-logo-fallback" style="display:none;background:linear-gradient(135deg,#be185d,#ec4899);">L</div>
           <div>
             <div class="company-name">Livspace</div>
-            <div class="company-role">CX Consultant · eCommerce & Marketplace</div>
+            <div class="company-role">CX Consultant · eCommerce & Home Marketplace</div>
           </div>
         </div>
         <div class="timeline-highlights">
@@ -909,6 +955,71 @@
   </div>
 </section>
 
+<!-- EDUCATION -->
+<section id="education" style="background:var(--cream2);">
+  <div class="reveal">
+    <div class="section-eyebrow">Learning never stops</div>
+    <h2 class="section-title">Education & <em>Credentials</em></h2>
+  </div>
+  <div class="edu-grid reveal">
+
+    <div class="edu-card">
+      <div class="edu-card-icon" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">🎓</div>
+      <div>
+        <div class="edu-card-title">BBA</div>
+        <div class="edu-card-inst">ICFAI University</div>
+        <div class="edu-card-type">Degree</div>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-card-icon" style="background:linear-gradient(135deg,#7c2d12,#c2410c);">🏛️</div>
+      <div>
+        <div class="edu-card-title">Leading People</div>
+        <div class="edu-card-inst">Harvard Business School Online</div>
+        <div class="edu-card-type">Certificate</div>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-card-icon" style="background:linear-gradient(135deg,#0f766e,#14b8a6);">🤖</div>
+      <div>
+        <div class="edu-card-title">Enhancing CX with Generative AI</div>
+        <div class="edu-card-inst">Simplilearn</div>
+        <div class="edu-card-type">Certificate</div>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-card-icon" style="background:linear-gradient(135deg,#166534,#22c55e);">📊</div>
+      <div>
+        <div class="edu-card-title">NISM VA — Mutual Fund Distributor</div>
+        <div class="edu-card-inst">NISM (SEBI)</div>
+        <div class="edu-card-type">Certification</div>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-card-icon" style="background:linear-gradient(135deg,#b45309,#d97706);">⚙️</div>
+      <div>
+        <div class="edu-card-title">Lean Six Sigma</div>
+        <div class="edu-card-inst">White Belt</div>
+        <div class="edu-card-type">Certification</div>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-card-icon" style="background:linear-gradient(135deg,#7c3aed,#a855f7);">🌐</div>
+      <div>
+        <div class="edu-card-title">English · Hindi · Kannada</div>
+        <div class="edu-card-inst">Professional Fluency</div>
+        <div class="edu-card-type">Languages</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <section id="passion">
   <div class="reveal">
     <div class="section-eyebrow">Beyond work</div>
@@ -974,18 +1085,7 @@
         <div class="contact-item"><div class="contact-icon">💼</div><a href="https://www.linkedin.com/in/syed-rashad/" target="_blank" rel="noopener">View LinkedIn Profile ↗</a></div>
       </div>
     </div>
-    <div class="education-card reveal">
-      <div class="edu-title">Education & Certifications</div>
-      <div class="edu-list">
-        <div class="edu-item"><div class="edu-badge">🎓</div>BBA — ICFAI University</div>
-        <div class="edu-item"><div class="edu-badge">🏛️</div>Leading People — Harvard Business School Online</div>
-        <div class="edu-item"><div class="edu-badge">🤖</div>Enhancing CX with GenAI — Simplilearn</div>
-        <div class="edu-item"><div class="edu-badge">📊</div>NISM VA — Mutual Fund Distributor</div>
-        <div class="edu-item"><div class="edu-badge">⚙️</div>Lean Six Sigma — White Belt</div>
-        <div class="edu-item"><div class="edu-badge">🌐</div>English · Hindi · Kannada (Professional)</div>
-      </div>
     </div>
-  </div>
 </section>
 
 <footer>

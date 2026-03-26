@@ -308,22 +308,31 @@
 
   /* SKILLS */
   #skills { background: var(--cream2); }
-  .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 4rem; align-items: start; }
-  .skill-group { margin-bottom: 2.5rem; }
-  .skill-group-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
-  .skill-bar-item { margin-bottom: 1.2rem; }
-  .skill-bar-header { display: flex; justify-content: space-between; margin-bottom: 0.4rem; }
-  .skill-name { font-size: 0.82rem; color: var(--charcoal); font-weight: 500; }
-  .skill-pct { font-size: 0.75rem; color: var(--muted2); }
-  .skill-bar-track { height: 3px; background: rgba(176,141,87,0.15); border-radius: 2px; overflow: hidden; }
-  .skill-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); border-radius: 2px; width: 0; transition: width 1.2s ease; }
-  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; }
-  .tool-chip {
-    padding: 0.6rem 0.8rem; background: var(--white); border: 1px solid rgba(176,141,87,0.12);
-    border-radius: 8px; font-size: 0.72rem; font-weight: 500; color: var(--charcoal2);
-    text-align: center; transition: all 0.2s ease;
+  .skills-tag-layout { display: flex; flex-direction: column; gap: 2.5rem; margin-top: 3rem; }
+  .skill-cluster {}
+  .skill-cluster-title {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.8rem;
   }
-  .tool-chip:hover { border-color: var(--gold); color: var(--gold); }
+  .skill-cluster-title::before { content: ''; display: block; width: 20px; height: 1px; background: var(--gold); }
+  .skill-tag-group { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .skill-tag {
+    padding: 0.45rem 1rem;
+    background: var(--white);
+    border: 1px solid rgba(176,141,87,0.15);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--charcoal2);
+    transition: all 0.2s ease;
+    cursor: default;
+  }
+  .skill-tag:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(176,141,87,0.05);
+  }
 
   /* PASSION */
   #passion { background: var(--cream); }
@@ -510,14 +519,14 @@
       Ops Architect.
     </h1>
     <p class="hero-subtitle">
-      10+ years of building customer-first systems, scaling operations, and deploying AI to solve real problems — from zero to scale, across startups in fintech, wealthtech, hospitality & marketplace.
+      10+ years of building customer-first systems, scaling operations, and deploying AI to solve real problems — from zero to scale, across startups in fintech, wealthtech, hospitality & Interior Designing.
     </p>
     <div class="hero-tags">
       <span class="tag">Customer Experience</span>
       <span class="tag">AI & Automation</span>
       <span class="tag">0 → 1 Building</span>
       <span class="tag">Fintech · WealthTech</span>
-      <span class="tag">Hospitality · Ecom Marketplace</span>
+      <span class="tag">Hospitality ·Marketplace</span>
     </div>
     <div class="hero-cta">
       <a href="#journey" class="btn-primary">Explore Journey</a>
@@ -831,104 +840,75 @@
     <div class="section-eyebrow">Core competencies</div>
     <h2 class="section-title">Skills & <em>Expertise</em></h2>
   </div>
-  <div class="skills-layout">
-    <div>
-      <div class="skill-group">
-        <div class="skill-group-title">Startup & Generalist Ops</div>
-        <div class="skill-bar-item">
-          <div class="skill-bar-header"><span class="skill-name">0 → 1 Building (from scratch)</span><span class="skill-pct">95%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div>
-        </div>
-        <div class="skill-bar-item">
-          <div class="skill-bar-header"><span class="skill-name">1 → 10 Scaling</span><span class="skill-pct">90%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
-        </div>
-        <div class="skill-bar-item">
-          <div class="skill-bar-header"><span class="skill-name">Cross-functional Leadership</span><span class="skill-pct">88%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">CX & Operations</div>
-        <div class="skill-bar-item">
-          <div class="skill-bar-header"><span class="skill-name">Customer Journey Design</span><span class="skill-pct">95%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div>
-        </div>
-        <div class="skill-bar-item">
-          <div class="skill-bar-header"><span class="skill-name">SLA & SOP Management</span><span class="skill-pct">92%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div>
-        </div>
-        <div class="skill-bar-item">
-          <div class="skill-bar-header"><span class="skill-name">Team Building & Hiring</span><span class="skill-pct">90%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
-        </div>
-        <div class="skill-bar-item">
-          <div class="skill-bar-header"><span class="skill-name">Customer Retention</span><span class="skill-pct">88%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">AI & Automation</div>
-        <div class="skill-bar-item">
-          <div class="skill-bar-header"><span class="skill-name">Generative AI (Claude, ChatGPT)</span><span class="skill-pct">88%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
-        </div>
-        <div class="skill-bar-item">
-          <div class="skill-bar-header"><span class="skill-name">Workflow Automation & No-Code</span><span class="skill-pct">85%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
-        </div>
-        <div class="skill-bar-item">
-          <div class="skill-bar-header"><span class="skill-name">Prompt Engineering & AI Systems</span><span class="skill-pct">82%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Domain Expertise</div>
-        <div class="skill-bar-item">
-          <div class="skill-bar-header"><span class="skill-name">Mutual Fund Ops (BSE, MFU)</span><span class="skill-pct">90%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
-        </div>
-        <div class="skill-bar-item">
-          <div class="skill-bar-header"><span class="skill-name">Hospitality & Guest Experience</span><span class="skill-pct">82%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div>
-        </div>
-        <div class="skill-bar-item">
-          <div class="skill-bar-header"><span class="skill-name">KYC, Compliance & SEBI/AMFI</span><span class="skill-pct">80%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
-        </div>
+  <div class="skills-tag-layout reveal">
+
+    <div class="skill-cluster">
+      <div class="skill-cluster-title">Startup & Generalist Ops</div>
+      <div class="skill-tag-group">
+        <span class="skill-tag">0 → 1 Building</span>
+        <span class="skill-tag">1 → 10 Scaling</span>
+        <span class="skill-tag">Cross-functional Leadership</span>
+        <span class="skill-tag">Founding Team Experience</span>
+        <span class="skill-tag">Rapid Prototyping</span>
       </div>
     </div>
-    <div>
-      <div class="skill-group-title" style="margin-bottom:1rem;">Tools & Platforms</div>
-      <div class="tools-grid">
-        <div class="tool-chip">Freshdesk</div>
-        <div class="tool-chip">Zendesk</div>
-        <div class="tool-chip">Jira</div>
-        <div class="tool-chip">ERPNext</div>
-        <div class="tool-chip">SendGrid</div>
-        <div class="tool-chip">Mailchimp</div>
-        <div class="tool-chip">Kaleyra</div>
-        <div class="tool-chip">CleverTap</div>
-        <div class="tool-chip">Claude AI</div>
-        <div class="tool-chip">ChatGPT</div>
-        <div class="tool-chip">WhatsApp API</div>
-        <div class="tool-chip">BSE / MFU</div>
-      </div>
-      <div style="margin-top:2.5rem;">
-        <div class="skill-group-title" style="margin-bottom:1rem;">Education & Certifications</div>
-        <div style="display:flex;flex-direction:column;gap:0.7rem;">
-          <div class="tool-chip" style="text-align:left;padding:0.8rem 1rem;">🎓 BBA — ICFAI University</div>
-          <div class="tool-chip" style="text-align:left;padding:0.8rem 1rem;">🏛️ Leading People — Harvard Business School Online</div>
-          <div class="tool-chip" style="text-align:left;padding:0.8rem 1rem;">🤖 Enhancing CX with Generative AI — Simplilearn</div>
-          <div class="tool-chip" style="text-align:left;padding:0.8rem 1rem;">📊 NISM VA — Mutual Fund Distributor</div>
-          <div class="tool-chip" style="text-align:left;padding:0.8rem 1rem;">⚙️ Lean Six Sigma — White Belt</div>
-        </div>
+
+    <div class="skill-cluster">
+      <div class="skill-cluster-title">Customer Experience & Operations</div>
+      <div class="skill-tag-group">
+        <span class="skill-tag">Customer Journey Design</span>
+        <span class="skill-tag">SLA & SOP Management</span>
+        <span class="skill-tag">QA Frameworks</span>
+        <span class="skill-tag">Escalation Protocols</span>
+        <span class="skill-tag">Team Building & Hiring</span>
+        <span class="skill-tag">Customer Retention</span>
+        <span class="skill-tag">Voice of Customer</span>
       </div>
     </div>
+
+    <div class="skill-cluster">
+      <div class="skill-cluster-title">AI & Automation</div>
+      <div class="skill-tag-group">
+        <span class="skill-tag">Generative AI (Claude, ChatGPT)</span>
+        <span class="skill-tag">Workflow Automation</span>
+        <span class="skill-tag">No-Code Development</span>
+        <span class="skill-tag">Prompt Engineering</span>
+        <span class="skill-tag">AI-Assisted Product Building</span>
+        <span class="skill-tag">LLM Integration</span>
+      </div>
+    </div>
+
+    <div class="skill-cluster">
+      <div class="skill-cluster-title">Domain Expertise</div>
+      <div class="skill-tag-group">
+        <span class="skill-tag">Mutual Fund Ops (BSE, MFU)</span>
+        <span class="skill-tag">KYC & Compliance</span>
+        <span class="skill-tag">SEBI & AMFI Regulations</span>
+        <span class="skill-tag">Hospitality Guest Experience</span>
+        <span class="skill-tag">eCommerce & Marketplace Ops</span>
+        <span class="skill-tag">Healthcare CRM</span>
+      </div>
+    </div>
+
+    <div class="skill-cluster">
+      <div class="skill-cluster-title">Tools & Platforms</div>
+      <div class="skill-tag-group">
+        <span class="skill-tag">Freshdesk</span>
+        <span class="skill-tag">Zendesk</span>
+        <span class="skill-tag">Jira</span>
+        <span class="skill-tag">ERPNext</span>
+        <span class="skill-tag">SendGrid</span>
+        <span class="skill-tag">Mailchimp</span>
+        <span class="skill-tag">Kaleyra</span>
+        <span class="skill-tag">CleverTap</span>
+        <span class="skill-tag">WhatsApp API</span>
+        <span class="skill-tag">BSE / MFU Platforms</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- PASSION & INTERESTS -->
 <section id="passion">
   <div class="reveal">
     <div class="section-eyebrow">Beyond work</div>
@@ -990,7 +970,7 @@
       <p class="section-desc">Whether you're building something new, looking for a CX & Ops leader, or just want to geek out about AI — I'm always up for a good conversation.</p>
       <div class="contact-info">
         <div class="contact-item"><div class="contact-icon">📍</div>Bengaluru, Karnataka, India</div>
-        <div class="contact-item"><div class="contact-icon">✉️</div><a href="mailto:letmecusoon93&#64;gmail.com">letmecusoon93&#64;gmail.com</a></div>
+        <div class="contact-item"><div class="contact-icon">✉️</div><a href="/cdn-cgi/l/email-protection#f599908198909680869a9a9bccc6d3d6c3c1ce9298949c99db969a98">letmecusoon93&#64;gmail.com</a></div>
         <div class="contact-item"><div class="contact-icon">💼</div><a href="https://www.linkedin.com/in/syed-rashad/" target="_blank" rel="noopener">View LinkedIn Profile ↗</a></div>
       </div>
     </div>
@@ -1014,16 +994,13 @@
   <div>Built with purpose · 2026</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Only animate if page has rendered (check after short delay)
   window.addEventListener('load', function() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
-            bar.style.width = bar.dataset.width + '%';
-          });
         }
       });
     }, { threshold: 0.1 });
@@ -1033,21 +1010,9 @@
       observer.observe(el);
     });
 
-    // Animate skill bars that are already visible on load
-    document.querySelectorAll('.skill-bar-fill').forEach(bar => {
-      const rect = bar.getBoundingClientRect();
-      if (rect.top < window.innerHeight) {
-        bar.style.width = bar.dataset.width + '%';
-      }
-    });
+
   });
 
   window.addEventListener('scroll', () => {
     const nav = document.querySelector('nav');
-    nav.style.boxShadow = window.scrollY > 50 ? '0 4px 30px rgba(0,0,0,0.08)' : 'none';
-  });
-
-  const sections = document.querySelectorAll('section[id]');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(
+    nav.style.boxShadow = window.scrollY > 50 ? '0 4px 30px rgba(0,0,0,0.08)' : 'none

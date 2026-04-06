@@ -256,113 +256,68 @@
   .highlight::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-size: 0.75rem; }
 
   /* BUILDS SLIDER */
-  #builds { background: var(--cream); overflow: hidden; }
+  #builds { background: var(--cream); }
+  .builds-slider-wrap { position: relative; margin-top: 3.5rem; user-select: none; }
 
-  .builds-slider-wrap { position: relative; margin-top: 3.5rem; }
+  /* The outer clip */
+  .builds-track-outer { overflow: hidden; }
 
-  .builds-track-outer {
-    overflow: hidden;
-    border-radius: 20px;
-  }
-
-  .builds-track {
-    display: flex;
-    gap: 2rem;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
-  }
+  /* Cards sit in a flex row; JS sets translateX */
+  .builds-track { display: flex; gap: 2rem; }
 
   .build-card {
+    flex: 0 0 calc(33.333% - 1.35rem);
     background: var(--white);
     border: 1px solid rgba(176,141,87,0.12);
     border-radius: 20px;
-    padding: 3rem 2.5rem;
+    padding: 2.8rem 2.2rem;
     position: relative;
     overflow: hidden;
-    flex: 0 0 calc(33.333% - 1.35rem);
-    min-width: calc(33.333% - 1.35rem);
+    display: flex; flex-direction: column;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
-    cursor: default;
-    display: flex;
-    flex-direction: column;
   }
-
-  .build-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; border-radius: 20px 20px 0 0; }
-  .build-card.card-1::before { background: linear-gradient(90deg, #7c3aed, #a855f7); }
-  .build-card.card-2::before { background: linear-gradient(90deg, #0f766e, #14b8a6); }
-  .build-card.card-3::before { background: linear-gradient(90deg, #b45309, #d97706); }
-  .build-card.card-4::before { background: linear-gradient(90deg, #be185d, #f43f5e); }
-
   .build-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.1); }
+  .build-card::before { content:''; position:absolute; top:0;left:0;right:0;height:4px;border-radius:20px 20px 0 0; }
+  .build-card.card-1::before { background:linear-gradient(90deg,#7c3aed,#a855f7); }
+  .build-card.card-2::before { background:linear-gradient(90deg,#0f766e,#14b8a6); }
+  .build-card.card-3::before { background:linear-gradient(90deg,#b45309,#d97706); }
+  .build-card.card-4::before { background:linear-gradient(90deg,#be185d,#f43f5e); }
 
-  .build-icon {
-    width: 56px; height: 56px; border-radius: 16px; display: flex;
-    align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 1.8rem; flex-shrink: 0;
-  }
-  .build-card.card-1 .build-icon { background: rgba(124,58,237,0.08); }
-  .build-card.card-2 .build-icon { background: rgba(15,118,110,0.08); }
-  .build-card.card-3 .build-icon { background: rgba(180,83,9,0.08); }
-  .build-card.card-4 .build-icon { background: rgba(190,24,93,0.08); }
+  .build-icon { width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.5rem; }
+  .build-card.card-1 .build-icon { background:rgba(124,58,237,0.08); }
+  .build-card.card-2 .build-icon { background:rgba(15,118,110,0.08); }
+  .build-card.card-3 .build-icon { background:rgba(180,83,9,0.08); }
+  .build-card.card-4 .build-icon { background:rgba(190,24,93,0.08); }
 
-  .build-name { font-family: var(--serif); font-size: 1.7rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.4rem; }
-  .build-tagline { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); margin-bottom: 1.1rem; }
-  .build-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.75; margin-bottom: 1.5rem; flex: 1; }
+  .build-name { font-family:var(--serif);font-size:1.7rem;font-weight:500;color:var(--charcoal);margin-bottom:0.4rem; }
+  .build-tagline { font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted2);margin-bottom:1rem; }
+  .build-desc { font-size:0.85rem;color:var(--muted);line-height:1.75;margin-bottom:1.4rem;flex:1; }
+  .build-pills { display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.2rem; }
+  .build-pill { padding:0.3rem 0.75rem;border-radius:100px;font-size:0.64rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase; }
+  .card-1 .build-pill { background:rgba(124,58,237,0.07);color:#7c3aed; }
+  .card-2 .build-pill { background:rgba(15,118,110,0.07);color:#0f766e; }
+  .card-3 .build-pill { background:rgba(180,83,9,0.07);color:#b45309; }
+  .card-4 .build-pill { background:rgba(190,24,93,0.07);color:#be185d; }
+  .build-link { display:inline-flex;align-items:center;gap:0.45rem;font-size:0.74rem;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;text-decoration:none;transition:gap 0.2s ease;margin-top:auto; }
+  .card-1 .build-link{color:#7c3aed;} .card-2 .build-link{color:#0f766e;} .card-3 .build-link{color:#b45309;} .card-4 .build-link{color:#be185d;}
+  .build-link:hover { gap:0.75rem; }
 
-  .build-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.4rem; }
-  .build-pill { padding: 0.3rem 0.75rem; border-radius: 100px; font-size: 0.64rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
-  .card-1 .build-pill { background: rgba(124,58,237,0.07); color: #7c3aed; }
-  .card-2 .build-pill { background: rgba(15,118,110,0.07); color: #0f766e; }
-  .card-3 .build-pill { background: rgba(180,83,9,0.07); color: #b45309; }
-  .card-4 .build-pill { background: rgba(190,24,93,0.07); color: #be185d; }
-
-  .build-link {
-    display: inline-flex; align-items: center; gap: 0.45rem;
-    font-size: 0.74rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase;
-    text-decoration: none; transition: gap 0.2s ease; margin-top: auto;
-  }
-  .card-1 .build-link { color: #7c3aed; }
-  .card-2 .build-link { color: #0f766e; }
-  .card-3 .build-link { color: #b45309; }
-  .card-4 .build-link { color: #be185d; }
-  .build-link:hover { gap: 0.75rem; }
-
-  /* Slider controls */
-  .slider-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-  }
-
+  /* Controls */
+  .slider-controls { display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-top:2.2rem; }
   .slider-btn {
-    width: 44px; height: 44px;
-    border: 1px solid rgba(176,141,87,0.3);
-    border-radius: 50%;
-    background: var(--white);
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    font-size: 1rem;
-    color: var(--charcoal);
-    transition: all 0.2s ease;
-    flex-shrink: 0;
+    width:44px;height:44px;border-radius:50%;border:1px solid rgba(176,141,87,0.3);
+    background:var(--white);cursor:pointer;font-size:1.1rem;color:var(--charcoal);
+    display:flex;align-items:center;justify-content:center;transition:all 0.2s;
+    line-height:1;
   }
-  .slider-btn:hover { background: var(--gold); border-color: var(--gold); color: white; }
+  .slider-btn:hover { background:var(--gold);border-color:var(--gold);color:#fff; }
+  .slider-dots { display:flex;gap:0.5rem;align-items:center; }
+  .slider-dot { width:7px;height:7px;border-radius:50%;background:rgba(176,141,87,0.25);cursor:pointer;transition:all 0.3s; }
+  .slider-dot.active { background:var(--gold);width:22px;border-radius:4px; }
 
-  .slider-dots {
-    display: flex; gap: 0.5rem; align-items: center;
+  @media(max-width:900px){
+    .build-card { flex:0 0 82vw; }
   }
-  .slider-dot {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: rgba(176,141,87,0.25);
-    transition: all 0.3s ease; cursor: pointer;
-  }
-  .slider-dot.active {
-    background: var(--gold); width: 22px; border-radius: 4px;
-  }
-
-  @media (max-width: 900px) {
-    .build-card { flex: 0 0 85vw; min-width: 85vw; }
   }
 
   /* AI PHILOSOPHY */
@@ -819,9 +774,9 @@
 <!-- WHAT I'VE BUILT -->
 <section id="builds">
   <div class="reveal">
-    <div class="section-eyebrow">AI & Product Innovation</div>
+    <div class="section-eyebrow">AI &amp; Product Innovation</div>
     <h2 class="section-title">What I've <em>Built</em></h2>
-    <p class="section-desc">Problem-first thinking. Fast iteration. Real-world validation. Four products designed and shipped using AI-assisted development.</p>
+    <p class="section-desc">Problem-first thinking. Fast iteration. Real-world validation. Products designed and shipped using AI-assisted development.</p>
   </div>
   <div class="builds-slider-wrap reveal">
     <div class="builds-track-outer">
@@ -832,25 +787,17 @@
           <div class="build-name">Picamanah</div>
           <div class="build-tagline">Secure Photo Sharing Platform</div>
           <div class="build-desc">A privacy-first platform addressing misuse of personal images in matrimony ecosystems. Enables consent-based access control and secure sharing workflows — built to solve a real social problem with technology.</div>
-          <div class="build-pills">
-            <span class="build-pill">Privacy Tech</span>
-            <span class="build-pill">AI-Assisted Dev</span>
-            <span class="build-pill">Consent UX</span>
-          </div>
-          <a class="build-link" href="https://picamanah.space/" target="_blank">Visit Site →</a>
+          <div class="build-pills"><span class="build-pill">Privacy Tech</span><span class="build-pill">AI-Assisted Dev</span><span class="build-pill">Consent UX</span></div>
+          <a class="build-link" href="https://picamanah.space/" target="_blank" rel="noopener">Visit Site →</a>
         </div>
 
         <div class="build-card card-2">
           <div class="build-icon">🗳️</div>
           <div class="build-name">VoterTrace</div>
           <div class="build-tagline">Electoral Roll Intelligence Tool</div>
-          <div class="build-desc">An OCR-powered search system to extract and process user inputs from electoral rolls. Implements fuzzy matching algorithms to identify closest matches — widely adopted by communities in Bangalore for voter verification.</div>
-          <div class="build-pills">
-            <span class="build-pill">OCR</span>
-            <span class="build-pill">Fuzzy Matching</span>
-            <span class="build-pill">Civic Tech</span>
-          </div>
-          <a class="build-link" href="https://syed786778.github.io/voter_trace/" target="_blank">Visit Site →</a>
+          <div class="build-desc">An OCR-powered search system to extract and process user inputs from electoral rolls. Implements fuzzy matching to identify closest matches — widely adopted by communities in Bangalore for voter verification.</div>
+          <div class="build-pills"><span class="build-pill">OCR</span><span class="build-pill">Fuzzy Matching</span><span class="build-pill">Civic Tech</span></div>
+          <a class="build-link" href="https://syed786778.github.io/voter_trace/" target="_blank" rel="noopener">Visit Site →</a>
         </div>
 
         <div class="build-card card-3">
@@ -858,39 +805,29 @@
           <div class="build-name">Retirement Engine</div>
           <div class="build-tagline">AI-Assisted Retirement Readiness Tool</div>
           <div class="build-desc">Built at Mighty — an AI-assisted tool that assesses customer retirement readiness and triggers contextual engagement. Improved lead qualification quality and customer engagement depth at scale.</div>
-          <div class="build-pills">
-            <span class="build-pill">LLM Integration</span>
-            <span class="build-pill">WealthTech</span>
-            <span class="build-pill">Lead Qualification</span>
-          </div>
+          <div class="build-pills"><span class="build-pill">LLM Integration</span><span class="build-pill">WealthTech</span><span class="build-pill">Lead Qualification</span></div>
         </div>
 
         <div class="build-card card-4">
           <div class="build-icon">🏢</div>
           <div class="build-name">ProprRush</div>
           <div class="build-tagline">Real Estate Developer Website</div>
-          <div class="build-desc">Built a complete web presence for a legacy real estate developer — designed and shipped using Claude, deployed to GitHub Pages, and configured with a custom domain on GoDaddy. Gave the business its first professional online identity with trust signals and a lead generation funnel.</div>
-          <div class="build-pills">
-            <span class="build-pill">Real Estate</span>
-            <span class="build-pill">GitHub Pages</span>
-            <span class="build-pill">Lead Generation</span>
-            <span class="build-pill">Claude-Built</span>
-          </div>
-          <a class="build-link" href="https://proprrush.com" target="_blank">Visit Site →</a>
+          <div class="build-desc">Built a complete web presence for a legacy real estate developer using Claude — deployed on GitHub Pages with a custom domain configured on GoDaddy. Gave the business its first professional online identity with trust signals and a lead generation funnel.</div>
+          <div class="build-pills"><span class="build-pill">Real Estate</span><span class="build-pill">GitHub Pages</span><span class="build-pill">Lead Generation</span><span class="build-pill">Claude-Built</span></div>
+          <a class="build-link" href="https://proprrush.com" target="_blank" rel="noopener">Visit Site →</a>
         </div>
 
       </div>
     </div>
-
     <div class="slider-controls">
-      <button class="slider-btn" id="buildsPrev" aria-label="Previous">&#8592;</button>
+      <button class="slider-btn" id="buildsPrev">&#8592;</button>
       <div class="slider-dots" id="buildsDots">
-        <div class="slider-dot active" data-index="0"></div>
-        <div class="slider-dot" data-index="1"></div>
-        <div class="slider-dot" data-index="2"></div>
-        <div class="slider-dot" data-index="3"></div>
+        <span class="slider-dot active" data-i="0"></span>
+        <span class="slider-dot" data-i="1"></span>
+        <span class="slider-dot" data-i="2"></span>
+        <span class="slider-dot" data-i="3"></span>
       </div>
-      <button class="slider-btn" id="buildsNext" aria-label="Next">&#8594;</button>
+      <button class="slider-btn" id="buildsNext">&#8594;</button>
     </div>
   </div>
 </section>
@@ -1224,108 +1161,58 @@
 
   });
 
-  // BUILDS SLIDER — bulletproof rewrite
-  (function() {
-    const track = document.getElementById('buildsTrack');
-    const dotsContainer = document.getElementById('buildsDots');
-    const prevBtn = document.getElementById('buildsPrev');
-    const nextBtn = document.getElementById('buildsNext');
-    if (!track || !prevBtn || !nextBtn) return;
+  // BUILDS SLIDER
+  var bTrack  = document.getElementById('buildsTrack');
+  var bDots   = document.querySelectorAll('#buildsDots .slider-dot');
+  var bPrev   = document.getElementById('buildsPrev');
+  var bNext   = document.getElementById('buildsNext');
+  var bCur    = 0;
+  var bTimer  = null;
+  var bCards  = bTrack ? bTrack.querySelectorAll('.build-card') : [];
+  var bTotal  = bCards.length;
 
-    const cards = Array.from(track.querySelectorAll('.build-card'));
-    const total = cards.length;
-    let current = 0;
-    let autoTimer = null;
-    let isAnimating = false;
+  function bVisible() { return window.innerWidth <= 900 ? 1 : 3; }
+  function bMax()     { return bTotal - bVisible(); }
 
-    function getCardWidth() {
-      const outer = track.parentElement;
-      const outerW = outer.offsetWidth;
-      const gap = 32;
-      const visible = window.innerWidth <= 900 ? 1 : 3;
-      return (outerW - gap * (visible - 1)) / visible;
+  function bGo(n) {
+    if (!bTrack) return;
+    bCur = Math.max(0, Math.min(n, bMax()));
+    // card width = (container - gaps) / visible
+    var outer = bTrack.parentElement.offsetWidth;
+    var gap   = 32;
+    var vis   = bVisible();
+    var cw    = (outer - gap * (vis - 1)) / vis;
+    bTrack.style.transition = 'transform 0.55s ease';
+    bTrack.style.transform  = 'translateX(-' + (bCur * (cw + gap)) + 'px)';
+    // set each card width explicitly
+    for (var i = 0; i < bCards.length; i++) {
+      bCards[i].style.flex     = '0 0 ' + cw + 'px';
+      bCards[i].style.minWidth = cw + 'px';
     }
+    bDots.forEach(function(d,i){ d.classList.toggle('active', i === bCur); });
+  }
 
-    function setCardSizes() {
-      const w = getCardWidth();
-      cards.forEach(c => {
-        c.style.flex = '0 0 ' + w + 'px';
-        c.style.minWidth = w + 'px';
-      });
-    }
+  function bNext_fn() { bGo(bCur >= bMax() ? 0 : bCur + 1); }
+  function bPrev_fn() { bGo(bCur <= 0 ? bMax() : bCur - 1); }
 
-    function updateDots() {
-      const allDots = dotsContainer.querySelectorAll('.slider-dot');
-      allDots.forEach((d, i) => d.classList.toggle('active', i === current));
-    }
+  function bStart() { clearInterval(bTimer); bTimer = setInterval(bNext_fn, 3200); }
 
-    function slideTo(idx, animate) {
-      if (isAnimating) return;
-      const maxIdx = window.innerWidth <= 900 ? total - 1 : total - 3;
-      current = ((idx % total) + total) % total;
-      if (current > maxIdx) current = 0;
+  if (bPrev) bPrev.addEventListener('click', function(){ bPrev_fn(); bStart(); });
+  if (bNext) bNext.addEventListener('click', function(){ bNext_fn(); bStart(); });
+  bDots.forEach(function(d){ d.addEventListener('click', function(){ bGo(+d.dataset.i); bStart(); }); });
 
-      const cardW = getCardWidth();
-      const gap = 32;
-      const offset = current * (cardW + gap);
+  if (bTrack) {
+    bTrack.addEventListener('mouseenter', function(){ clearInterval(bTimer); });
+    bTrack.addEventListener('mouseleave', bStart);
+    var bTX = 0;
+    bTrack.addEventListener('touchstart', function(e){ bTX = e.touches[0].clientX; clearInterval(bTimer); }, {passive:true});
+    bTrack.addEventListener('touchend',   function(e){ var d = bTX - e.changedTouches[0].clientX; if(Math.abs(d)>40){d>0?bNext_fn():bPrev_fn();} bStart(); }, {passive:true});
+  }
 
-      if (animate === false) {
-        track.style.transition = 'none';
-      } else {
-        isAnimating = true;
-        track.style.transition = 'transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)';
-        setTimeout(() => { isAnimating = false; }, 580);
-      }
-      track.style.transform = 'translateX(-' + offset + 'px)';
-      updateDots();
-    }
+  window.addEventListener('resize', function(){ bGo(bCur); });
+  bGo(0);
+  bStart();
 
-    function next() { slideTo(current + 1, true); }
-    function prev() { slideTo(current - 1, true); }
-
-    function startAuto() {
-      stopAuto();
-      autoTimer = setInterval(next, 3200);
-    }
-    function stopAuto() {
-      if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
-    }
-
-    // Wire up buttons
-    prevBtn.onclick = function() { prev(); startAuto(); };
-    nextBtn.onclick = function() { next(); startAuto(); };
-
-    // Dots
-    dotsContainer.querySelectorAll('.slider-dot').forEach(function(d) {
-      d.onclick = function() { slideTo(+d.dataset.index, true); startAuto(); };
-    });
-
-    // Pause on hover
-    track.addEventListener('mouseenter', stopAuto);
-    track.addEventListener('mouseleave', startAuto);
-
-    // Touch swipe
-    var touchStartX = 0;
-    track.addEventListener('touchstart', function(e) {
-      touchStartX = e.touches[0].clientX;
-      stopAuto();
-    }, {passive: true});
-    track.addEventListener('touchend', function(e) {
-      var diff = touchStartX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 40) { diff > 0 ? next() : prev(); }
-      startAuto();
-    }, {passive: true});
-
-    // Init
-    setCardSizes();
-    slideTo(0, false);
-    startAuto();
-
-    window.addEventListener('resize', function() {
-      setCardSizes();
-      slideTo(current, false);
-    });
-  })();
 
 
   window.addEventListener('scroll', () => {

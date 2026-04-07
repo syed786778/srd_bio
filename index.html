@@ -255,39 +255,85 @@
   .highlight { font-size: 0.82rem; color: var(--muted); padding-left: 1.2rem; position: relative; line-height: 1.6; }
   .highlight::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-size: 0.75rem; }
 
-  /* BUILDS */
+  /* BUILDS SLIDER */
   #builds { background: var(--cream); }
-  .builds-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem; }
+  .builds-slider-wrap { position: relative; margin-top: 3.5rem; }
+
+  .builds-track-outer {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    border-radius: 4px;
+  }
+  .builds-track-outer::-webkit-scrollbar { display: none; }
+
+  .builds-track {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+  }
+
   .build-card {
-    background: var(--white); border: 1px solid rgba(176,141,87,0.12); border-radius: 16px;
-    padding: 2.5rem 2rem; position: relative; overflow: hidden; transition: all 0.3s ease; cursor: default;
+    width: calc((100vw - 12rem - 4rem) / 3);
+    max-width: 420px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    background: var(--white);
+    border: 1px solid rgba(176,141,87,0.12);
+    border-radius: 20px;
+    padding: 2.8rem 2.2rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
-  .build-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
-  .build-card.card-1::before { background: linear-gradient(90deg, #7c3aed, #a855f7); }
-  .build-card.card-2::before { background: linear-gradient(90deg, #0f766e, #14b8a6); }
-  .build-card.card-3::before { background: linear-gradient(90deg, #b45309, #d97706); }
-  .build-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
-  .build-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem; }
-  .build-card.card-1 .build-icon { background: rgba(124,58,237,0.1); }
-  .build-card.card-2 .build-icon { background: rgba(15,118,110,0.1); }
-  .build-card.card-3 .build-icon { background: rgba(180,83,9,0.1); }
-  .build-name { font-family: var(--serif); font-size: 1.6rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.5rem; }
-  .build-tagline { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); margin-bottom: 1rem; }
-  .build-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
-  .build-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.2rem; }
-  .build-pill { padding: 0.3rem 0.7rem; border-radius: 100px; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
-  .card-1 .build-pill { background: rgba(124,58,237,0.08); color: #7c3aed; }
-  .card-2 .build-pill { background: rgba(15,118,110,0.08); color: #0f766e; }
-  .card-3 .build-pill { background: rgba(180,83,9,0.08); color: #b45309; }
-  .build-link {
-    display: inline-flex; align-items: center; gap: 0.4rem;
-    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-    text-decoration: none; transition: gap 0.2s ease;
+  .build-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.1); }
+
+  .build-card::before { content:''; position:absolute; top:0;left:0;right:0;height:4px;border-radius:20px 20px 0 0; }
+  .build-card.card-1::before { background:linear-gradient(90deg,#7c3aed,#a855f7); }
+  .build-card.card-2::before { background:linear-gradient(90deg,#0f766e,#14b8a6); }
+  .build-card.card-3::before { background:linear-gradient(90deg,#b45309,#d97706); }
+  .build-card.card-4::before { background:linear-gradient(90deg,#be185d,#f43f5e); }
+
+  .build-icon { width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.5rem; }
+  .build-card.card-1 .build-icon { background:rgba(124,58,237,0.08); }
+  .build-card.card-2 .build-icon { background:rgba(15,118,110,0.08); }
+  .build-card.card-3 .build-icon { background:rgba(180,83,9,0.08); }
+  .build-card.card-4 .build-icon { background:rgba(190,24,93,0.08); }
+
+  .build-name { font-family:var(--serif);font-size:1.7rem;font-weight:500;color:var(--charcoal);margin-bottom:0.4rem; }
+  .build-tagline { font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted2);margin-bottom:1rem; }
+  .build-desc { font-size:0.85rem;color:var(--muted);line-height:1.75;margin-bottom:1.4rem;flex:1; }
+  .build-pills { display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.2rem; }
+  .build-pill { padding:0.3rem 0.75rem;border-radius:100px;font-size:0.64rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase; }
+  .card-1 .build-pill { background:rgba(124,58,237,0.07);color:#7c3aed; }
+  .card-2 .build-pill { background:rgba(15,118,110,0.07);color:#0f766e; }
+  .card-3 .build-pill { background:rgba(180,83,9,0.07);color:#b45309; }
+  .card-4 .build-pill { background:rgba(190,24,93,0.07);color:#be185d; }
+  .build-link { display:inline-flex;align-items:center;gap:0.45rem;font-size:0.74rem;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;text-decoration:none;transition:gap 0.2s;margin-top:auto; }
+  .card-1 .build-link{color:#7c3aed;} .card-2 .build-link{color:#0f766e;} .card-3 .build-link{color:#b45309;} .card-4 .build-link{color:#be185d;}
+  .build-link:hover { gap:0.75rem; }
+
+  .slider-controls { display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-top:2rem; }
+  .slider-btn {
+    width:44px;height:44px;border-radius:50%;
+    border:1px solid rgba(176,141,87,0.3);
+    background:var(--white);cursor:pointer;
+    font-size:1.1rem;color:var(--charcoal);
+    display:flex;align-items:center;justify-content:center;
+    transition:all 0.2s;
   }
-  .card-1 .build-link { color: #7c3aed; }
-  .card-2 .build-link { color: #0f766e; }
-  .card-3 .build-link { color: #b45309; }
-  .build-link:hover { gap: 0.7rem; }
+  .slider-btn:hover { background:var(--gold);border-color:var(--gold);color:#fff; }
+  .slider-dots { display:flex;gap:0.5rem;align-items:center; }
+  .slider-dot { width:7px;height:7px;border-radius:50%;background:rgba(176,141,87,0.25);cursor:pointer;transition:all 0.3s;border:none;padding:0; }
+  .slider-dot.active { background:var(--gold);width:22px;border-radius:4px; }
+
+  @media(max-width:900px){
+    .build-card { width: 82vw; max-width:82vw; }
+  }
 
   /* AI PHILOSOPHY */
   #philosophy {
@@ -617,7 +663,7 @@
           <div class="highlight">Designed <strong>Orion</strong>, a unified internal platform integrating KYC, transactions, portfolio analytics and customer data — reduced tool dependency and accelerated feature deployment</div>
           <div class="highlight">Led mutual fund operations across 40+ AMCs and RTAs, including full integrations with BSE and MFU platforms — ensuring regulatory compliance at every step</div>
           <div class="highlight">Launched and scaled the Retirement Planning vertical from concept to execution: 25K+ leads generated, 3K+ advisory sessions conducted</div>
-          <div class="highlight">Built and deployed engagement workflows across WhatsApp and email — improved lead conversion by 14% and response efficiency significantly</div>
+          <div class="highlight">Built and deployed AI-assisted engagement workflows across WhatsApp and email — improved lead conversion by 14% and response efficiency significantly</div>
           <div class="highlight">Established QA frameworks, SOPs, and escalation protocols — consistently achieved &lt;6hr FRT, 90%+ SLA adherence, and 94%+ CSAT</div>
           <div class="highlight">Hired, mentored and built the CX team culture — instilling a customer-first mindset that scaled with the business from 1→10</div>
           <div class="highlight">Wore many hats: from ops and compliance to product feedback loops and business strategy — a true generalist in the startup trenches</div>
@@ -743,53 +789,106 @@
 <!-- WHAT I'VE BUILT -->
 <section id="builds">
   <div class="reveal">
-    <div class="section-eyebrow">AI & Product Innovation</div>
+    <div class="section-eyebrow">AI &amp; Product Innovation</div>
     <h2 class="section-title">What I've <em>Built</em></h2>
     <p class="section-desc">Problem-first thinking. Fast iteration. Real-world validation. Products designed and shipped using AI-assisted development.</p>
   </div>
-  <div class="builds-grid reveal">
+  <div class="builds-slider-wrap reveal">
+    <div class="builds-track-outer" id="bScroll">
+      <div class="builds-track">
 
-    <div class="build-card card-1">
-      <div class="build-icon">🔒</div>
-      <div class="build-name">Picamanah</div>
-      <div class="build-tagline">Secure Photo Sharing Platform</div>
-      <div class="build-desc">A privacy-first platform addressing misuse of personal images in matrimony ecosystems. Enables consent-based access control and secure sharing workflows — built to solve a real social problem with technology.</div>
-      <div class="build-pills">
-        <span class="build-pill">Privacy Tech</span>
-        <span class="build-pill">AI-Assisted Dev</span>
-        <span class="build-pill">Consent UX</span>
+        <div class="build-card card-1">
+          <div class="build-icon">🔒</div>
+          <div class="build-name">Picamanah</div>
+          <div class="build-tagline">Secure Photo Sharing Platform</div>
+          <div class="build-desc">A privacy-first platform addressing misuse of personal images in matrimony ecosystems. Enables consent-based access control and secure sharing workflows — built to solve a real social problem with technology.</div>
+          <div class="build-pills"><span class="build-pill">Privacy Tech</span><span class="build-pill">AI-Assisted Dev</span><span class="build-pill">Consent UX</span></div>
+          <a class="build-link" href="https://picamanah.space/" target="_blank" rel="noopener">Visit Site →</a>
+        </div>
+
+        <div class="build-card card-2">
+          <div class="build-icon">🗳️</div>
+          <div class="build-name">VoterTrace</div>
+          <div class="build-tagline">Electoral Roll Intelligence Tool</div>
+          <div class="build-desc">An OCR-powered search system to extract and process user inputs from electoral rolls. Implements fuzzy matching to identify closest matches — widely adopted by communities in Bangalore for voter verification.</div>
+          <div class="build-pills"><span class="build-pill">OCR</span><span class="build-pill">Fuzzy Matching</span><span class="build-pill">Civic Tech</span></div>
+          <a class="build-link" href="https://syed786778.github.io/voter_trace/" target="_blank" rel="noopener">Visit Site →</a>
+        </div>
+
+        <div class="build-card card-3">
+          <div class="build-icon">🧭</div>
+          <div class="build-name">Retirement Engine</div>
+          <div class="build-tagline">AI-Assisted Retirement Readiness Tool</div>
+          <div class="build-desc">Built at Mighty — an AI-assisted tool that assesses customer retirement readiness and triggers contextual engagement. Improved lead qualification quality and customer engagement depth at scale.</div>
+          <div class="build-pills"><span class="build-pill">LLM Integration</span><span class="build-pill">WealthTech</span><span class="build-pill">Lead Qualification</span></div>
+        </div>
+
+        <div class="build-card card-4">
+          <div class="build-icon">🏢</div>
+          <div class="build-name">Proprush</div>
+          <div class="build-tagline">Real Estate Developer Website</div>
+          <div class="build-desc">Built a complete web presence for a legacy real estate developer using Claude — deployed on GitHub Pages with a custom domain on GoDaddy. Gave the business its first professional online identity with trust signals and a lead generation funnel.</div>
+          <div class="build-pills"><span class="build-pill">Real Estate</span><span class="build-pill">GitHub Pages</span><span class="build-pill">Lead Generation</span><span class="build-pill">Claude-Built</span></div>
+          <a class="build-link" href="https://proprush.in" target="_blank" rel="noopener">Visit Site →</a>
+        </div>
+
       </div>
-      <a class="build-link" href="https://picamanah.space/" target="_blank">Visit Site →</a>
     </div>
 
-    <div class="build-card card-2">
-      <div class="build-icon">🗳️</div>
-      <div class="build-name">VoterTrace</div>
-      <div class="build-tagline">Electoral Roll Intelligence Tool</div>
-      <div class="build-desc">An OCR-powered search system to extract and process user inputs from electoral rolls. Implements fuzzy matching algorithms to identify closest matches — widely adopted by communities in Bangalore for voter verification.</div>
-      <div class="build-pills">
-        <span class="build-pill">OCR</span>
-        <span class="build-pill">Fuzzy Matching</span>
-        <span class="build-pill">Civic Tech</span>
+    <div class="slider-controls">
+      <button class="slider-btn" id="bPrevBtn">&#8592;</button>
+      <div class="slider-dots" id="bDotsWrap">
+        <button class="slider-dot active" data-idx="0"></button>
+        <button class="slider-dot" data-idx="1"></button>
+        <button class="slider-dot" data-idx="2"></button>
+        <button class="slider-dot" data-idx="3"></button>
       </div>
-      <a class="build-link" href="https://syed786778.github.io/voter_trace/" target="_blank">Visit Site →</a>
+      <button class="slider-btn" id="bNextBtn">&#8594;</button>
     </div>
-
-    <div class="build-card card-3">
-      <div class="build-icon">🧭</div>
-      <div class="build-name">Retirement Engine</div>
-      <div class="build-tagline">AI-Assisted Retirement Readiness Tool</div>
-      <div class="build-desc">Built at Mighty — an AI-assisted tool that assesses customer retirement readiness and triggers contextual engagement. Improved lead qualification quality and customer engagement depth at scale.</div>
-      <div class="build-pills">
-        <span class="build-pill">LLM Integration</span>
-        <span class="build-pill">WealthTech</span>
-        <span class="build-pill">Lead Qualification</span>
-
-      </div>
-    </div>
-
   </div>
 </section>
+
+<script>
+(function(){
+  var sc   = document.getElementById('bScroll');
+  var prev = document.getElementById('bPrevBtn');
+  var next = document.getElementById('bNextBtn');
+  var dots = document.querySelectorAll('#bDotsWrap .slider-dot');
+  if(!sc || !prev || !next) return;
+
+  var cur = 0;
+  var total = 4;
+  var timer = null;
+
+  function cardW() {
+    // width of one card including its gap
+    var cards = sc.querySelectorAll('.build-card');
+    if(!cards.length) return sc.offsetWidth;
+    return cards[0].offsetWidth + 32; // 32 = gap
+  }
+
+  function goTo(n) {
+    if(n < 0) n = total - 1;
+    if(n >= total) n = 0;
+    cur = n;
+    sc.scrollTo({ left: cur * cardW(), behavior: 'smooth' });
+    dots.forEach(function(d,i){ d.classList.toggle('active', i===cur); });
+  }
+
+  prev.onclick = function(){ goTo(cur - 1); resetTimer(); };
+  next.onclick = function(){ goTo(cur + 1); resetTimer(); };
+  dots.forEach(function(d){ d.onclick = function(){ goTo(+d.dataset.idx); resetTimer(); }; });
+
+  sc.addEventListener('mouseenter', function(){ clearInterval(timer); });
+  sc.addEventListener('mouseleave', startTimer);
+
+  function startTimer(){ timer = setInterval(function(){ goTo(cur + 1); }, 3200); }
+  function resetTimer(){ clearInterval(timer); startTimer(); }
+
+  goTo(0);
+  startTimer();
+})();
+</script>
 
 
 <!-- TESTIMONIALS -->
@@ -1119,6 +1218,8 @@
 
 
   });
+
+
 
   window.addEventListener('scroll', () => {
     const nav = document.querySelector('nav');

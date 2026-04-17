@@ -106,7 +106,7 @@ a{color:inherit;text-decoration:none;}
 /* right — text side */
 .hero-text-side{
   display:flex;flex-direction:column;justify-content:center;
-  padding:8rem 4rem 4rem 4rem;
+  padding:5rem 4rem 3rem 4rem;
   background:var(--paper);
   position:relative;
 }
@@ -126,9 +126,9 @@ a{color:inherit;text-decoration:none;}
 .hero-label::before{content:'';width:20px;height:1px;background:var(--terra);}
 h1.hero-h{
   font-family:var(--serif);
-  font-size:clamp(3.5rem,6vw,6rem);
-  font-weight:900;line-height:0.95;
-  letter-spacing:-0.04em;color:var(--ink);
+  font-size:clamp(4rem,7vw,7.5rem);
+  font-weight:900;line-height:0.92;
+  letter-spacing:-0.05em;color:var(--ink);
   position:relative;z-index:1;
 }
 h1.hero-h .line-accent{
@@ -178,38 +178,43 @@ h1.hero-h .line-sub{
 
 /* ───── INTRO STRIP ───── */
 #strip{
-  background:var(--forest);
-  padding:1.5rem 2.5rem;
-  display:flex;align-items:center;gap:0;
-  overflow:hidden;
+  background:var(--forest2);
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:2px solid var(--terra);
 }
-.strip-track{
-  display:flex;gap:0;
-  animation:stripScroll 20s linear infinite;
-  width:max-content;white-space:nowrap;
-}
-.strip-item{
-  padding:0 3rem;
-  font-family:var(--serif);font-size:1.1rem;font-weight:400;font-style:italic;
-  color:rgba(244,237,224,0.5);
+.strip-stat{
+  padding:2rem 2.5rem;
   border-right:1px solid rgba(244,237,224,0.1);
-  display:flex;align-items:center;gap:1rem;
+  display:flex;flex-direction:column;gap:0.3rem;
+  transition:background 0.3s;
 }
-.strip-item .dot{width:4px;height:4px;border-radius:50%;background:var(--terra);flex-shrink:0;}
-.strip-item.highlight{color:var(--paper);font-weight:600;}
-@keyframes stripScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.strip-stat:last-child{border-right:none;}
+.strip-stat:hover{background:rgba(244,237,224,0.04);}
+.strip-num{
+  font-family:var(--serif);font-size:2.8rem;font-weight:900;
+  color:var(--paper);line-height:1;letter-spacing:-0.03em;
+}
+.strip-num span{color:var(--terra2);font-style:italic;}
+.strip-lbl{
+  font-family:var(--mono);font-size:0.6rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:rgba(244,237,224,0.45);
+}
+.strip-ctx{font-size:0.78rem;color:rgba(244,237,224,0.35);margin-top:0.15rem;line-height:1.4;}
+@media(max-width:960px){#strip{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){#strip{grid-template-columns:repeat(2,1fr);}.strip-stat{padding:1.5rem;}.strip-num{font-size:2rem;}}
 
 /* ───── SECTION COMMONS ───── */
 .s-label{
-  font-family:var(--mono);font-size:0.6rem;letter-spacing:0.2em;
+  font-family:var(--mono);font-size:0.68rem;letter-spacing:0.2em;
   text-transform:uppercase;color:var(--terra);
-  display:flex;align-items:center;gap:0.7rem;margin-bottom:0.8rem;
+  display:flex;align-items:center;gap:0.7rem;margin-bottom:1rem;
 }
-.s-label::before{content:'';width:18px;height:1px;background:var(--terra);}
+.s-label::before{content:'';width:24px;height:1.5px;background:var(--terra);}
 .s-h{
   font-family:var(--serif);
-  font-size:clamp(2.4rem,4vw,4rem);
-  font-weight:700;line-height:1.1;letter-spacing:-0.03em;color:var(--ink);
+  font-size:clamp(3rem,5vw,5.2rem);
+  font-weight:900;line-height:1.0;letter-spacing:-0.04em;color:var(--ink);
 }
 .s-h em{font-style:italic;color:var(--terra);font-weight:400;}
 .s-h.on-dark{color:var(--paper);}
@@ -221,14 +226,14 @@ h1.hero-h .line-sub{
   background:var(--white);
 }
 .story-left{
-  padding:6rem 4rem;
+  padding:4rem 4rem;
   border-right:1px solid rgba(26,18,8,0.08);
 }
 .story-body{
   margin-top:2.5rem;
   font-size:1.05rem;color:var(--smoke);line-height:1.95;
 }
-.story-body p{margin-bottom:1.4rem;}
+.story-body p{margin-bottom:1rem;}
 .story-body p:last-child{margin-bottom:0;}
 .story-body strong{color:var(--ink);font-weight:600;}
 .story-pull{
@@ -239,10 +244,10 @@ h1.hero-h .line-sub{
 }
 
 .story-right{
-  padding:6rem 4rem;
+  padding:4rem 4rem;
   display:flex;flex-direction:column;justify-content:space-between;gap:2rem;
 }
-.fact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(26,18,8,0.08);}
+.fact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(26,18,8,0.08);margin-top:1.5rem;}
 .fact-card{
   background:var(--white);padding:2rem 1.5rem;
   display:flex;flex-direction:column;gap:0.3rem;
@@ -266,15 +271,15 @@ h1.hero-h .line-sub{
 .domain-tag:hover{background:var(--terra);color:var(--white);border-color:var(--terra);}
 
 /* ───── CAREER ───── */
-#career{background:var(--forest);padding:6rem 0 0;}
-#career .s-header{padding:0 4rem 3.5rem;}
+#career{background:#0F1A14;padding:4rem 0 0;}
+#career .s-header{padding:0 4rem 2.5rem;}
 #career .s-label{color:rgba(196,98,58,0.8);}
-#career .s-label::before{background:var(--terra2);}
+#career .s-label::before{background:#E07A52;}
 
-.career-table{border-top:1px solid rgba(244,237,224,0.08);}
+.career-table{border-top:1px solid rgba(255,248,240,0.1);}
 .career-row{
   display:grid;grid-template-columns:180px 1fr;
-  border-bottom:1px solid rgba(244,237,224,0.08);
+  border-bottom:1px solid rgba(255,248,240,0.1);
   transition:background 0.3s;
 }
 .career-row:hover{background:rgba(255,255,255,0.03);}
@@ -282,20 +287,20 @@ h1.hero-h .line-sub{
 .career-row.animate.visible{opacity:1;transform:none;}
 
 .cr-left{
-  padding:2.5rem 2rem;
-  border-right:1px solid rgba(244,237,224,0.08);
+  padding:2rem 2rem;
+  border-right:1px solid rgba(255,248,240,0.1);
   display:flex;flex-direction:column;gap:0.25rem;
 }
-.cr-seq{font-family:var(--mono);font-size:0.55rem;letter-spacing:0.15em;color:rgba(196,98,58,0.5);margin-bottom:0.4rem;}
-.cr-year{font-family:var(--serif);font-size:1.4rem;font-weight:400;color:rgba(244,237,224,0.7);line-height:1.1;}
-.cr-dur{font-family:var(--mono);font-size:0.55rem;color:rgba(244,237,224,0.22);letter-spacing:0.06em;margin-top:0.2rem;}
+.cr-seq{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.15em;color:rgba(224,122,82,0.7);margin-bottom:0.4rem;}
+.cr-year{font-family:var(--serif);font-size:1.5rem;font-weight:600;color:#E8D9C4;line-height:1.1;}
+.cr-dur{font-family:var(--mono);font-size:0.58rem;color:rgba(255,248,240,0.4);letter-spacing:0.06em;margin-top:0.2rem;}
 .cr-sector{
   margin-top:auto;padding-top:1rem;
   font-family:var(--mono);font-size:0.55rem;letter-spacing:0.1em;
   text-transform:uppercase;color:var(--terra2);
 }
 
-.cr-right{padding:2.5rem 3rem;}
+.cr-right{padding:2rem 2.5rem;}
 .cr-company-row{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;}
 .cr-logo{
   width:40px;height:40px;border-radius:10px;object-fit:contain;
@@ -307,18 +312,18 @@ h1.hero-h .line-sub{
   display:flex;align-items:center;justify-content:center;
   font-family:var(--serif);font-weight:700;font-size:1rem;color:#fff;
 }
-.cr-company{font-family:var(--serif);font-size:1.7rem;font-weight:700;color:var(--paper);letter-spacing:-0.02em;line-height:1;}
-.cr-role{font-size:0.7rem;color:rgba(244,237,224,0.38);margin-top:0.3rem;letter-spacing:0.03em;}
+.cr-company{font-family:var(--serif);font-size:2rem;font-weight:900;color:#FFFDF8;letter-spacing:-0.03em;line-height:1;}
+.cr-role{font-size:0.72rem;color:rgba(244,237,224,0.6);margin-top:0.4rem;letter-spacing:0.03em;}
 .cr-pts{display:grid;grid-template-columns:1fr 1fr;gap:0.45rem 2rem;}
 .cr-pts.solo{grid-template-columns:1fr;}
 .cr-pt{
-  font-size:0.78rem;color:rgba(244,237,224,0.48);
-  padding-left:0.9rem;position:relative;line-height:1.6;
+  font-size:0.82rem;color:rgba(255,248,240,0.78);
+  padding-left:1rem;position:relative;line-height:1.65;
 }
-.cr-pt::before{content:'→';position:absolute;left:0;color:var(--terra2);font-size:0.65rem;}
+.cr-pt::before{content:'→';position:absolute;left:0;color:#E07A52;font-size:0.7rem;line-height:inherit;}
 
 /* ───── BUILDS ───── */
-#builds{background:var(--paper2);padding:6rem 4rem;}
+#builds{background:var(--paper2);padding:4rem 4rem;}
 .builds-row{
   display:grid;grid-template-columns:1fr 1fr;
   gap:1.5rem;margin-top:3rem;
@@ -373,7 +378,7 @@ h1.hero-h .line-sub{
 
 /* ───── QUOTE BREAK ───── */
 #qbreak{
-  background:var(--terra);padding:5rem 4rem;
+  background:var(--terra);padding:3.5rem 4rem;
   position:relative;overflow:hidden;
 }
 #qbreak::before{
@@ -399,8 +404,8 @@ h1.hero-h .line-sub{
 }
 
 /* ───── VOICES ───── */
-#voices{background:var(--white);padding:6rem 4rem;}
-.voices-intro{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:3.5rem;}
+#voices{background:var(--white);padding:4rem 4rem;}
+.voices-intro{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:2.5rem;}
 .voices-intro-desc{font-size:0.92rem;color:var(--smoke);line-height:1.85;margin-top:1rem;}
 .voices-stat{text-align:right;}
 .voices-stat-num{font-family:var(--serif);font-size:4rem;font-weight:900;color:var(--terra);line-height:1;}
@@ -408,7 +413,7 @@ h1.hero-h .line-sub{
 
 .voices-list{display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(26,18,8,0.08);}
 .voice-row{
-  padding:2rem 0;
+  padding:1.5rem 0;
   border-bottom:1px solid rgba(26,18,8,0.08);
   display:grid;grid-template-columns:200px 1fr 120px;
   gap:2rem;align-items:start;
@@ -430,10 +435,10 @@ h1.hero-h .line-sub{
 }
 
 /* ───── SKILLS ───── */
-#skills{background:var(--forest);padding:6rem 4rem;}
+#skills{background:var(--forest);padding:4rem 4rem;}
 #skills .s-label{color:rgba(196,98,58,0.7);}
 #skills .s-label::before{background:var(--terra2);}
-.skills-2col{display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-top:3.5rem;}
+.skills-2col{display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-top:2.5rem;}
 .skill-cluster{margin-bottom:2.5rem;}
 .sc-label{
   font-family:var(--mono);font-size:0.58rem;letter-spacing:0.18em;
@@ -452,7 +457,7 @@ h1.hero-h .line-sub{
 .sc-tag:hover{background:rgba(196,98,58,0.12);border-color:rgba(196,98,58,0.3);color:var(--terra2);}
 
 /* ───── EDUCATION ───── */
-#edu{background:var(--paper2);padding:5rem 4rem;}
+#edu{background:var(--paper2);padding:3.5rem 4rem;}
 .edu-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem;}
 .edu-card{
   background:var(--white);border-radius:6px;padding:1.6rem;
@@ -471,7 +476,7 @@ h1.hero-h .line-sub{
 }
 
 /* ───── PASSION ───── */
-#passion{background:var(--white);padding:6rem 4rem;}
+#passion{background:var(--white);padding:4rem 4rem;}
 .passion-grid{display:grid;grid-template-columns:5fr 4fr;gap:6rem;margin-top:3rem;align-items:start;}
 .passion-text p{font-size:0.98rem;color:var(--smoke);line-height:1.95;margin-bottom:1.3rem;}
 .passion-text p strong{color:var(--ink);font-weight:600;}
@@ -493,7 +498,7 @@ h1.hero-h .line-sub{
 .interest-desc{font-size:0.75rem;color:var(--mist);line-height:1.6;}
 
 /* ───── CONTACT ───── */
-#contact{background:var(--paper3);padding:6rem 4rem;}
+#contact{background:var(--paper3);padding:4rem 4rem;}
 .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
 .contact-left .s-h{font-size:clamp(3rem,6vw,5.5rem);}
 .contact-desc{font-size:0.92rem;color:var(--smoke);line-height:1.85;margin-top:1.2rem;max-width:380px;}
@@ -551,13 +556,13 @@ footer{
   .contact-wrap{grid-template-columns:1fr;gap:3rem;}
   #builds,#voices,#skills,#edu,#passion,#contact,#qbreak{padding:4rem 2rem;}
   nav{padding:1rem 1.5rem;}
-  .nav-menu{display:none;flex-direction:column;gap:1.5rem;position:fixed;top:0;right:0;bottom:0;width:72vw;max-width:280px;background:var(--white);padding:5rem 2rem 2rem;z-index:150;transform:translateX(100%);transition:transform 0.35s;border-left:1px solid rgba(26,18,8,0.08);}
+  .nav-menu{display:none;flex-direction:column;gap:1.5rem;position:fixed;top:0;right:0;bottom:0;width:72vw;max-width:280px;background:var(--white);padding:3rem 1.5rem 2rem;z-index:150;transform:translateX(100%);transition:transform 0.35s;border-left:1px solid rgba(26,18,8,0.08);}
   .nav-menu.open{display:flex;transform:translateX(0);}
   .nav-ham{display:block;z-index:300;position:relative;}
 }
 @media(max-width:580px){
   .career-row{grid-template-columns:1fr;}
-  .cr-left{border-right:none;border-bottom:1px solid rgba(244,237,224,0.08);padding:1.5rem 1.5rem 1rem;flex-direction:row;flex-wrap:wrap;align-items:center;gap:0.8rem;}
+  .cr-left{border-right:none;border-bottom:1px solid rgba(255,248,240,0.1);padding:1.5rem 1.5rem 1rem;flex-direction:row;flex-wrap:wrap;align-items:center;gap:0.8rem;}
   .cr-sector{margin-top:0;padding-top:0;}
   .edu-cards{grid-template-columns:1fr;}
   h1.hero-h{font-size:clamp(3rem,12vw,4rem);}
@@ -576,6 +581,7 @@ footer{
   </button>
   <ul class="nav-menu" id="navMenu">
     <li><a href="#story">My Story</a></li>
+    <li><a href="#about">About Me</a></li>
     <li><a href="#career">Journey</a></li>
     <li><a href="#builds">Builds</a></li>
     <li><a href="#voices">Voices</a></li>
@@ -597,11 +603,11 @@ footer{
     <h1 class="hero-h">
       I build
       <span class="line-accent">things that<br/>matter.</span>
-      <span class="line-sub">10+ years of CX, ops<br/>& AI in the startup world.</span>
+      <span class="line-sub">10+ years of CX, ops<br/>& startups in India.</span>
     </h1>
     <div class="hero-divider"></div>
     <p class="hero-intro">
-      Hi, I'm Syed — a customer experience leader, AI tinkerer, and startup generalist based in Bengaluru. I've spent a decade <strong>building from scratch, scaling with intention,</strong> and shipping products that solve real problems.
+      Hi, I'm Syed — a customer experience leader and startup generalist based in Bengaluru. I've spent a decade <strong>building from scratch, scaling with intention,</strong> and shipping products that solve real problems.
     </p>
     <div class="hero-btns">
       <a href="#story" class="btn-terra">Read My Story</a>
@@ -611,25 +617,27 @@ footer{
   </div>
 </section>
 
-<!-- TICKER STRIP -->
+<!-- STAT BAR -->
 <div id="strip">
-  <div class="strip-track">
-    <div class="strip-item highlight"><span class="dot"></span>10+ Years Building</div>
-    <div class="strip-item">6 Companies</div>
-    <div class="strip-item highlight"><span class="dot"></span>4 Products Shipped</div>
-    <div class="strip-item">25K+ Leads Generated</div>
-    <div class="strip-item highlight"><span class="dot"></span>40+ People Led</div>
-    <div class="strip-item">94%+ CSAT</div>
-    <div class="strip-item highlight"><span class="dot"></span>0→1 Builder</div>
-    <div class="strip-item">AI-Powered Workflows</div>
-    <div class="strip-item highlight"><span class="dot"></span>10+ Years Building</div>
-    <div class="strip-item">6 Companies</div>
-    <div class="strip-item highlight"><span class="dot"></span>4 Products Shipped</div>
-    <div class="strip-item">25K+ Leads Generated</div>
-    <div class="strip-item highlight"><span class="dot"></span>40+ People Led</div>
-    <div class="strip-item">94%+ CSAT</div>
-    <div class="strip-item highlight"><span class="dot"></span>0→1 Builder</div>
-    <div class="strip-item">AI-Powered Workflows</div>
+  <div class="strip-stat">
+    <div class="strip-num">10<span>+</span></div>
+    <div class="strip-lbl">Years of experience</div>
+    <div class="strip-ctx">Across 6 companies in fintech, wealthtech, hospitality & more</div>
+  </div>
+  <div class="strip-stat">
+    <div class="strip-num">40<span>+</span></div>
+    <div class="strip-lbl">People led</div>
+    <div class="strip-ctx">Built teams from scratch, hired, trained, and grew them</div>
+  </div>
+  <div class="strip-stat">
+    <div class="strip-num">94<span>%</span></div>
+    <div class="strip-lbl">Peak CSAT achieved</div>
+    <div class="strip-ctx">From 46% — through process redesign, culture, and systems</div>
+  </div>
+  <div class="strip-stat">
+    <div class="strip-num">4</div>
+    <div class="strip-lbl">Products shipped</div>
+    <div class="strip-ctx">Real tools solving real problems — from civic tech to real estate</div>
   </div>
 </div>
 
@@ -639,11 +647,10 @@ footer{
     <div class="s-label">My Story</div>
     <h2 class="s-h">Not just a career —<br/><em>a journey.</em></h2>
     <div class="story-body">
-      <p>I didn't plan to become a CX leader. I started in a small health-tech company in 2013, answering support tickets and reconciling payments. But I kept noticing the same thing: <strong>the distance between what customers experienced and what companies thought they were delivering.</strong> That gap fascinated me.</p>
+      <p>I didn't plan to become a CX leader. I started in a small health-tech company, answering support tickets and reconciling payments. But I kept noticing the same thing: <strong>the distance between what customers experienced and what companies thought they were delivering.</strong> That gap fascinated me.</p>
       <div class="story-pull">"I've never been content just running a process. I want to know why it exists, whether it's the right one, and what we can do to make it dramatically better."</div>
-      <p>Over the past decade, I’ve built customer experience teams from the ground up, worked closely with founders at Treebo, Mighty, and others to shape not only operations, but the businesses themselves.</p>
-      <p>Today I work at the intersection of <strong>customer experience, AI-assisted systems, and startup operations</strong> — using tools like Claude to ship products in days that used to take months, and deploying automation that makes small teams punch well above their weight.</p>
-       <p>I’m deeply driven by problem-solving, naturally curious about how things can work better, and guided by a mindset of never saying no before exploring what’s possible. In a world increasingly enabled by technology, I believe many challenges can be solved with the right thinking, persistence, and execution.</p>
+      <p>Over a decade I've built CX teams from scratch, launched products using AI before it was a buzzword, and worked directly with founders at Treebo, Mighty and others to shape not just operations — but the businesses themselves.</p>
+      <p>Today I work at the intersection of <strong>customer experience, technology, and startup operations</strong> — using the best available tools to move fast, automate what can be automated, and make small teams punch above their weight.</p>
       <p>When I'm not building things for work, I'm usually building things for fun — whether that's VoterTrace (a civic tech tool adopted across Bangalore) or Picamanah (a privacy platform for matrimony ecosystems). <strong>Building is how I think.</strong></p>
     </div>
   </div>
@@ -684,6 +691,43 @@ footer{
         <span class="domain-tag">Healthtech</span>
         <span class="domain-tag">Real Estate</span>
         <span class="domain-tag">Civic Tech</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT ME -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-left reveal">
+      <div class="s-label">About me</div>
+      <h2 class="s-h">Bengaluru<br/><em>made me.</em></h2>
+      <div class="about-body" style="margin-top:2rem;">
+        <p>I grew up watching Bengaluru transform. The city I knew as a BPO and outsourcing hub slowly became something else entirely — a place where garages turned into offices, where everyday people started companies, where <strong>something electric was happening</strong>.</p>
+        <p>I remember spending hours on YourStory, TechInAsia, and similar platforms, reading about funding rounds and founders. It wasn't just business news to me — it felt like a signal. <strong>A new India was being built, and I wanted to be part of it.</strong></p>
+        <div class="about-pull">"The startup world gave me something corporate life never could — the feeling that every single day, what you do actually matters."</div>
+        <p>I was drawn in by the pace, the people, and the possibility. Working alongside some of the brightest minds in the country, being in the room when real decisions were made, watching CEOs and CXOs navigate pressure in real time — it shaped how I think about work and leadership.</p>
+        <p>I've also experienced the harder side. I've been through layoffs — both as an observer and as someone helping teams navigate them. I led through COVID when every norm we relied on stopped working overnight. Through all of it, <strong>my family has been the constant</strong> — the quiet support that made it possible to keep going.</p>
+        <p>I've never felt the pull of a structured corporate setup. Something about startups — the speed, the scrappiness, the sense that nothing is impossible — has always felt more like home.</p>
+      </div>
+    </div>
+    <div class="about-right reveal">
+      <div class="moment-card">
+        <div class="moment-tag">The turning point</div>
+        <div class="moment-title">A café in HSR Layout changed everything.</div>
+        <div class="moment-body">
+          <p>I had applied for a customer support role at Treebo Hotels. My final interview was with <strong>Rahul Chaudhary</strong>, the co-founder, at a café in HSR Layout. I'd done my homework — read everything I could about Treebo's positioning against OYO, their model, their challenges.</p>
+          <p style="margin-top:0.8rem;">He was impressed. Not by my CV, but by the fact that I had <strong>thought about the business</strong>, not just the job description. He saw something I didn't see in myself yet — and offered me a Senior Operations Executive role instead of the support position I'd applied for.</p>
+          <p style="margin-top:0.8rem;">That moment of being seen — of someone believing you can do more than you thought — is something I carry into how I lead and hire today. <strong>It changed the trajectory of my career.</strong></p>
+        </div>
+      </div>
+      <div class="moment-card">
+        <div class="moment-tag">Early days at Treebo</div>
+        <div class="moment-title">Working with founders shaped my entire approach.</div>
+        <div class="moment-body">
+          <p>At Treebo I worked directly with the Director of CX, the founders, and almost every cross-functional team during the early days. Sitting in on strategy calls, watching how decisions were made under pressure, understanding how a fast-growing company balances vision with reality.</p>
+          <p style="margin-top:0.8rem;">It gave me a confidence I hadn't had before — the belief that <strong>I could operate at any level, in any room</strong>. That foundation has never left me.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -835,8 +879,8 @@ footer{
         <div class="build-feat-icon">🔒</div>
         <div class="build-feat-name">Picamanah</div>
         <div class="build-feat-tag">Secure Photo Sharing Platform</div>
-        <div class="build-feat-desc">A privacy-first platform I built after seeing personal photos misused in matrimony ecosystems. Enables consent-based access control — people share what they want, with who they choose. Built with AI-assisted development.</div>
-        <div class="build-feat-pills"><span class="build-feat-pill">Privacy Tech</span><span class="build-feat-pill">AI-Assisted Dev</span><span class="build-feat-pill">Consent UX</span></div>
+        <div class="build-feat-desc">A privacy-first platform I built after seeing personal photos misused in matrimony ecosystems. Enables consent-based access control — people share what they want, with who they choose. Built independently using modern development tools.</div>
+        <div class="build-feat-pills"><span class="build-feat-pill">Privacy Tech</span><span class="build-feat-pill">Built with Modern Tools</span><span class="build-feat-pill">Consent UX</span></div>
       </div>
       <div class="build-feat-bottom">
         <a class="build-feat-link" href="https://picamanah.space/" target="_blank" rel="noopener">Visit picamanah.space →</a>
@@ -890,7 +934,7 @@ footer{
 
 <!-- QUOTE BREAK -->
 <section id="qbreak">
-  <p class="q-text reveal">"I don't wait for engineering to solve problems. I build with AI as my co-pilot — fast, scrappy, and always with the customer in mind."</p>
+  <p class="q-text reveal">"I don't wait for the perfect conditions to solve problems. I move fast, use the best tools available, and never lose sight of the customer."</p>
   <p class="q-attr">— Syed Rashad</p>
 </section>
 
@@ -972,9 +1016,9 @@ footer{
         </div>
       </div>
       <div class="skill-cluster">
-        <div class="sc-label">AI & Automation</div>
+        <div class="sc-label">Technology & Automation</div>
         <div class="sc-tags">
-          <span class="sc-tag">Generative AI (Claude, ChatGPT)</span><span class="sc-tag">Workflow Automation</span><span class="sc-tag">No-Code Development</span><span class="sc-tag">Prompt Engineering</span><span class="sc-tag">AI Product Building</span>
+          <span class="sc-tag">AI Tools (Claude, ChatGPT)</span><span class="sc-tag">Workflow Automation</span><span class="sc-tag">No-Code Development</span><span class="sc-tag">Prompt Engineering</span><span class="sc-tag">Product Building</span>
         </div>
       </div>
     </div>
@@ -1021,12 +1065,12 @@ footer{
     <div class="passion-text reveal">
       <p>I'm fundamentally <strong>curious about why things don't work the way they should</strong> — and obsessed with closing that gap. This shows up in how I approach work, but also in the things I build in my own time.</p>
       <div class="passion-pull">"Building is how I think. When I encounter a problem, my first instinct isn't to complain — it's to sketch a solution."</div>
-      <p>I believe AI is the most powerful equaliser we've ever had for non-technical people. I use Claude daily — not as a novelty, but as a genuine co-pilot. The products I've shipped in weekends using AI would have taken months with a traditional engineering team.</p>
+      <p>I'm <strong>practical about technology</strong> — I use whatever tools help me move fast and solve problems. That means using modern AI tools the same way I use email or spreadsheets: as part of the daily workflow, not as the point of the work itself.</p>
       <p>I'm also deeply invested in <strong>community and civic tech</strong>. VoterTrace started because my neighbours couldn't find themselves on electoral rolls. That's the kind of problem I can't walk past without doing something about it.</p>
       <p>And yes — I'm a passionate <strong>animal lover</strong>. That probably says something about the kind of empathy I bring to everything else.</p>
     </div>
     <div class="interest-items reveal">
-      <div class="interest-item"><div class="interest-icon">🤖</div><div><div class="interest-title">AI & No-Code Building</div><div class="interest-desc">Using LLMs to ship real products fast, without a full engineering team. Claude is my daily co-pilot.</div></div></div>
+      <div class="interest-item"><div class="interest-icon">🤖</div><div><div class="interest-title">Building Things with Technology</div><div class="interest-desc">Using whatever tools work — no-code, AI assistants, automation — to ship ideas fast without waiting for a full team.</div></div></div>
       <div class="interest-item"><div class="interest-icon">🏙️</div><div><div class="interest-title">Civic & Community Tech</div><div class="interest-desc">Technology that helps everyday people — from voters finding themselves on rolls to communities organising online.</div></div></div>
       <div class="interest-item"><div class="interest-icon">💰</div><div><div class="interest-title">Fintech & WealthTech</div><div class="interest-desc">Democratising financial planning beyond the affluent. Technology that makes retirement and investing accessible to everyone.</div></div></div>
       <div class="interest-item"><div class="interest-icon">🔐</div><div><div class="interest-title">Privacy & Digital Rights</div><div class="interest-desc">Everyone deserves control over their digital presence. Picamanah was born from this conviction.</div></div></div>
@@ -1041,7 +1085,7 @@ footer{
     <div class="contact-left reveal">
       <div class="s-label">Get in touch</div>
       <h2 class="s-h">Let's<br/><em>talk.</em></h2>
-      <p class="contact-desc">Whether you're building something and need a CX leader, want to collaborate on a product, or just want to geek out about AI and startups — my inbox is open.</p>
+      <p class="contact-desc">Whether you're building something and need a CX leader, want to collaborate on a product, or just want to talk startups — my inbox is open.</p>
     </div>
     <div class="contact-items reveal">
       <div class="c-item">
@@ -1056,7 +1100,12 @@ footer{
       </div>
       <div class="c-item">
         <a href="https://www.linkedin.com/in/syed-rashad/" target="_blank" rel="noopener">
-          <div class="c-icon">💼</div>
+          <div class="c-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="24" height="24" rx="4" fill="#0A66C2"/>
+              <path d="M7.1 9.8H4.7V17h2.4V9.8zm-1.2-3.8C5.1 6 4.3 6.8 4.3 7.7s.8 1.7 1.6 1.7 1.6-.8 1.6-1.7S6.7 6 5.9 6zM19.7 13c0-2.1-1.1-3.4-3-3.4-1 0-1.8.5-2.2 1.2V9.8H12v7.2h2.4v-3.9c0-1 .5-1.6 1.3-1.6s1.3.6 1.3 1.6V17h2.4V13h.3z" fill="white"/>
+            </svg>
+          </div>
           <div><div class="c-label">LinkedIn</div><div class="c-val">View my profile ↗</div></div>
         </a>
       </div>

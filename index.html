@@ -62,7 +62,7 @@ a{color:inherit;text-decoration:none;}
 .nav-sig span{color:var(--terra);font-style:italic;}
 .nav-menu{display:flex;gap:2rem;list-style:none;}
 .nav-menu a{
-  font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;
+  font-family:var(--sans);font-size:0.78rem;font-weight:500;letter-spacing:0.04em;
   text-transform:uppercase;color:var(--smoke);transition:color 0.2s;
 }
 .nav-menu a:hover{color:var(--terra);}
@@ -71,13 +71,13 @@ a{color:inherit;text-decoration:none;}
 
 /* ───── HERO ───── */
 #hero{
-  min-height:100svh;
+  height:100svh;
+  min-height:560px;
   display:grid;
   grid-template-columns:1fr 1fr;
   position:relative;
   overflow:hidden;
 }
-@supports not (min-height:100svh){ #hero{ min-height:100vh; } }
 /* left — photo side */
 .hero-img-side{
   position:relative;
@@ -107,7 +107,7 @@ a{color:inherit;text-decoration:none;}
 /* right — text side */
 .hero-text-side{
   display:flex;flex-direction:column;justify-content:center;
-  padding:4rem 4rem;
+  padding:7rem 4rem 3rem;
   background:var(--paper);
   position:relative;
 }
@@ -121,8 +121,8 @@ a{color:inherit;text-decoration:none;}
 }
 .hero-label{
   display:inline-flex;align-items:center;gap:0.6rem;
-  font-family:var(--mono);font-size:0.6rem;letter-spacing:0.18em;
-  text-transform:uppercase;color:var(--terra);margin-bottom:1.5rem;
+  font-family:var(--sans);font-size:0.72rem;font-weight:600;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--terra);margin-bottom:2rem;
 }
 .hero-label::before{content:'';width:20px;height:1px;background:var(--terra);}
 h1.hero-h{
@@ -178,44 +178,11 @@ h1.hero-h .line-sub{
 .hero-scroll-hint::after{content:'';width:1px;height:40px;background:linear-gradient(to bottom,var(--mist),transparent);}
 
 /* ───── INTRO STRIP ───── */
-#strip{
-  background:var(--forest2);
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  border-top:2px solid var(--terra);
-}
-.strip-stat{
-  padding:2rem 2.5rem;
-  border-right:1px solid rgba(244,237,224,0.1);
-  display:flex;flex-direction:column;gap:0.3rem;
-  transition:background 0.3s;
-}
-.strip-stat:last-child{border-right:none;}
-.strip-stat:hover{background:rgba(244,237,224,0.04);}
-.strip-num{
-  font-family:var(--serif);font-size:2.8rem;font-weight:900;
-  color:var(--paper);line-height:1;letter-spacing:-0.03em;
-}
-.strip-num span{color:var(--terra2);font-style:italic;}
-.strip-lbl{
-  font-family:var(--mono);font-size:0.6rem;letter-spacing:0.15em;
-  text-transform:uppercase;color:rgba(244,237,224,0.45);
-}
-.strip-ctx{font-size:0.78rem;color:rgba(244,237,224,0.35);margin-top:0.15rem;line-height:1.4;}
-@media(max-width:960px){#strip{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:480px){#strip{grid-template-columns:repeat(2,1fr);}.strip-stat{padding:1.5rem;}.strip-num{font-size:2rem;}}
-
-/* ───── SECTION COMMONS ───── */
-.s-label{
-  font-family:var(--mono);font-size:0.68rem;letter-spacing:0.2em;
-  text-transform:uppercase;color:var(--terra);
-  display:flex;align-items:center;gap:0.7rem;margin-bottom:1rem;
-}
 .s-label::before{content:'';width:24px;height:1.5px;background:var(--terra);}
 .s-h{
   font-family:var(--serif);
-  font-size:clamp(3rem,5vw,5.2rem);
-  font-weight:900;line-height:1.0;letter-spacing:-0.04em;color:var(--ink);
+  font-size:clamp(3.2rem,5.5vw,5.5rem);
+  font-weight:900;line-height:0.97;letter-spacing:-0.04em;color:var(--ink);
 }
 .s-h em{font-style:italic;color:var(--terra);font-weight:400;}
 .s-h.on-dark{color:var(--paper);}
@@ -232,11 +199,11 @@ h1.hero-h .line-sub{
   border-bottom: 1px solid rgba(26,18,8,0.08);
 }
 .story-strip-text {
-  padding: 3.5rem 3rem;
+  padding: 3rem 3rem;
   border-right: 1px solid rgba(26,18,8,0.08);
 }
 .story-strip-body {
-  padding: 3.5rem 3rem;
+  padding: 3rem 3rem;
   border-right: 1px solid rgba(26,18,8,0.08);
 }
 .story-strip-body p {
@@ -244,7 +211,7 @@ h1.hero-h .line-sub{
 }
 .story-strip-body p:last-child { margin-bottom: 0; }
 .story-strip-body strong { color: var(--ink); font-weight: 600; }
-.story-strip-quote { padding: 3.5rem 3rem; }
+.story-strip-quote { padding: 3rem 3rem; }
 .story-big-q {
   font-family: var(--serif); font-size: 1.15rem; font-style: italic;
   color: var(--ink); line-height: 1.6; border-left: 3px solid var(--terra);
@@ -262,22 +229,24 @@ h1.hero-h .line-sub{
 /* Stats row */
 .story-stats {
   display: grid; grid-template-columns: repeat(4, 1fr);
+  border-top: 2px solid var(--terra);
   border-bottom: 1px solid rgba(26,18,8,0.08);
-  background: var(--paper);
+  background: var(--forest);
 }
 .story-stat-item {
-  padding: 2rem 3rem;
-  border-right: 1px solid rgba(26,18,8,0.08);
-  display: flex; flex-direction: column; gap: 0.3rem;
+  padding: 2.5rem 3rem;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  display: flex; flex-direction: column; gap: 0.35rem;
 }
 .story-stat-item:last-child { border-right: none; }
 .story-stat-num {
-  font-family: var(--serif); font-size: 3rem; font-weight: 900;
-  color: var(--terra); line-height: 1; letter-spacing: -0.03em;
+  font-family: var(--serif); font-size: 3.2rem; font-weight: 900;
+  color: var(--paper); line-height: 1; letter-spacing: -0.03em;
 }
+.story-stat-num span { color: var(--terra2); font-style: italic; }
 .story-stat-lbl {
-  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--mist);
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(244,237,224,0.45);
 }
 
 /* Moment cards */
@@ -285,7 +254,7 @@ h1.hero-h .line-sub{
   display: grid; grid-template-columns: 1fr 1fr;
 }
 .story-moment-card {
-  padding: 3rem;
+  padding: 2.5rem 3rem;
   border-right: 1px solid rgba(26,18,8,0.08);
   transition: background 0.3s;
 }
@@ -370,7 +339,7 @@ h1.hero-h .line-sub{
 .cr-pt::before{content:'→';position:absolute;left:0;color:#E07A52;font-size:0.7rem;line-height:inherit;}
 
 /* ───── BUILDS ───── */
-#builds{background:var(--paper2);padding:4rem 4rem;}
+#builds{background:var(--paper2);padding:3.5rem 4rem;}
 .builds-row{
   display:grid;grid-template-columns:1fr 1fr;
   gap:1.5rem;margin-top:3rem;
@@ -451,7 +420,7 @@ h1.hero-h .line-sub{
 }
 
 /* ───── VOICES ───── */
-#voices{background:var(--white);padding:4rem 4rem;}
+#voices{background:var(--white);padding:3.5rem 4rem;}
 .voices-intro{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:2.5rem;}
 .voices-intro-desc{font-size:0.92rem;color:var(--smoke);line-height:1.85;margin-top:1rem;}
 .voices-stat{text-align:right;}
@@ -482,7 +451,7 @@ h1.hero-h .line-sub{
 }
 
 /* ───── SKILLS ───── */
-#skills{background:var(--forest);padding:4rem 4rem;}
+#skills{background:var(--forest);padding:3.5rem 4rem;}
 #skills .s-label{color:rgba(196,98,58,0.7);}
 #skills .s-label::before{background:var(--terra2);}
 .skills-2col{display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-top:2.5rem;}
@@ -523,7 +492,7 @@ h1.hero-h .line-sub{
 }
 
 /* ───── PASSION ───── */
-#passion{background:var(--white);padding:4rem 4rem;}
+#passion{background:var(--white);padding:3.5rem 4rem;}
 .passion-grid{display:grid;grid-template-columns:5fr 4fr;gap:6rem;margin-top:3rem;align-items:start;}
 .passion-text p{font-size:0.98rem;color:var(--smoke);line-height:1.95;margin-bottom:1.3rem;}
 .passion-text p strong{color:var(--ink);font-weight:600;}
@@ -545,7 +514,7 @@ h1.hero-h .line-sub{
 .interest-desc{font-size:0.75rem;color:var(--mist);line-height:1.6;}
 
 /* ───── CONTACT ───── */
-#contact{background:var(--paper3);padding:4rem 4rem;}
+#contact{background:var(--paper3);padding:3.5rem 4rem;}
 .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
 .contact-left .s-h{font-size:clamp(3rem,6vw,5.5rem);}
 .contact-desc{font-size:0.92rem;color:var(--smoke);line-height:1.85;margin-top:1.2rem;max-width:380px;}
@@ -581,8 +550,8 @@ footer{
 /* ───── MOBILE ───── */
 @media(max-width:960px){
   #hero{grid-template-columns:1fr;min-height:auto;}
-  .hero-img-side{height:55vw;max-height:400px;}
-  .hero-text-side{padding:3rem 2rem 4rem;}
+  .hero-img-side{height:60vw;max-height:380px;}
+  .hero-text-side{padding:2.5rem 1.5rem 3rem;justify-content:flex-start;}
   .hero-scroll-hint{display:none;}
   .story-stats{grid-template-columns:repeat(2,1fr);}
   #career .s-header{padding:0 2rem 2.5rem;}
@@ -661,30 +630,6 @@ footer{
   </div>
 </section>
 
-<!-- STAT BAR -->
-<div id="strip">
-  <div class="strip-stat">
-    <div class="strip-num">10<span>+</span></div>
-    <div class="strip-lbl">Years of experience</div>
-    <div class="strip-ctx">Across 6 companies in fintech, wealthtech, hospitality & more</div>
-  </div>
-  <div class="strip-stat">
-    <div class="strip-num">40<span>+</span></div>
-    <div class="strip-lbl">People led</div>
-    <div class="strip-ctx">Built teams from scratch, hired, trained, and grew them</div>
-  </div>
-  <div class="strip-stat">
-    <div class="strip-num">94<span>%</span></div>
-    <div class="strip-lbl">Peak CSAT achieved</div>
-    <div class="strip-ctx">From 46% — through process redesign, culture, and systems</div>
-  </div>
-  <div class="strip-stat">
-    <div class="strip-num">4</div>
-    <div class="strip-lbl">Products shipped</div>
-    <div class="strip-ctx">Real tools solving real problems — from civic tech to real estate</div>
-  </div>
-</div>
-
 <!-- MY STORY & ABOUT -->
 <section id="story">
 
@@ -696,7 +641,7 @@ footer{
     </div>
     <div class="story-strip-body">
       <p>I grew up watching Bengaluru transform — from a BPO hub to a city where thousands of startups were born. Spending hours on YourStory and TechInAsia, reading funding news, I felt something shift. <strong>A new India was being built, and I wanted to be part of it.</strong></p>
-      <p>I started my career in 2013, answering support tickets. But I kept noticing the gap between what customers experienced and what companies thought they were delivering. That gap still fascinates me — and closing it became my life's work.</p>
+      <p>I started my career in 2014, answering support tickets. But I kept noticing the gap between what customers experienced and what companies thought they were delivering. That gap still fascinates me — and closing it became my life's work.</p>
     </div>
     <div class="story-strip-quote">
       <div class="story-big-q">"The startup world gave me something corporate life never could — the feeling that every single day, what you do actually matters."</div>
@@ -718,7 +663,7 @@ footer{
   <!-- MIDDLE: stats row -->
   <div class="story-stats">
     <div class="story-stat-item">
-      <div class="story-stat-num">10+</div>
+      <div class="story-stat-num">10<span>+</span></div>
       <div class="story-stat-lbl">Years in startups</div>
     </div>
     <div class="story-stat-item">
@@ -726,11 +671,11 @@ footer{
       <div class="story-stat-lbl">Companies</div>
     </div>
     <div class="story-stat-item">
-      <div class="story-stat-num">40+</div>
+      <div class="story-stat-num">40<span>+</span></div>
       <div class="story-stat-lbl">People led</div>
     </div>
     <div class="story-stat-item">
-      <div class="story-stat-num">94%</div>
+      <div class="story-stat-num">94<span>%</span></div>
       <div class="story-stat-lbl">Peak CSAT</div>
     </div>
   </div>
@@ -937,13 +882,13 @@ footer{
       <div class="build-feat-top">
         <div class="build-feat-accent"></div>
         <div class="build-feat-icon">🏢</div>
-        <div class="build-feat-name">ProprRush</div>
+        <div class="build-feat-name">Proprush</div>
         <div class="build-feat-tag">Real Estate Web Presence</div>
         <div class="build-feat-desc">A legacy real estate developer had no online presence — no website, no trust signals, no leads. I built them one with Claude, deployed it on GitHub Pages, bought and configured a domain on GoDaddy. First enquiry came in within a week.</div>
         <div class="build-feat-pills"><span class="build-feat-pill">Real Estate</span><span class="build-feat-pill">Claude-Built</span><span class="build-feat-pill">Lead Gen</span></div>
       </div>
       <div class="build-feat-bottom">
-        <a class="build-feat-link" href="https://proprrush.com" target="_blank" rel="noopener">Visit proprrush.com →</a>
+        <a class="build-feat-link" href="https://proprush.com" target="_blank" rel="noopener">Visit proprush.in →</a>
         <span class="build-feat-type">Client Project</span>
       </div>
     </div>

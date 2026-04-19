@@ -77,6 +77,7 @@ a{color:inherit;text-decoration:none;}
   position:relative;
   overflow:hidden;
 }
+@supports not (min-height:100svh){ #hero{ min-height:100vh; } }
 /* left — photo side */
 .hero-img-side{
   position:relative;
@@ -106,7 +107,7 @@ a{color:inherit;text-decoration:none;}
 /* right — text side */
 .hero-text-side{
   display:flex;flex-direction:column;justify-content:center;
-  padding:5rem 4rem 3rem 4rem;
+  padding:4rem 4rem;
   background:var(--paper);
   position:relative;
 }
@@ -155,19 +156,19 @@ h1.hero-h .line-sub{
 .hero-intro strong{color:var(--ink);font-weight:600;}
 .hero-btns{display:flex;gap:0.8rem;margin-top:2rem;flex-wrap:wrap;}
 .btn-terra{
-  padding:0.8rem 1.8rem;background:var(--terra);color:var(--white);
-  border-radius:100px;font-family:var(--mono);font-size:0.65rem;
-  letter-spacing:0.1em;text-transform:uppercase;
-  transition:all 0.25s;border:none;cursor:pointer;
+  padding:1rem 2.2rem;background:var(--terra);color:var(--white);
+  border-radius:4px;font-family:var(--sans);font-size:0.88rem;font-weight:600;
+  letter-spacing:0.02em;
+  transition:all 0.25s;border:none;cursor:pointer;display:inline-block;
 }
-.btn-terra:hover{background:var(--terra2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(196,98,58,0.3);}
+.btn-terra:hover{background:var(--terra2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(196,98,58,0.35);}
 .btn-outline-terra{
-  padding:0.8rem 1.8rem;background:transparent;color:var(--terra);
-  border:1.5px solid rgba(196,98,58,0.35);border-radius:100px;
-  font-family:var(--mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;
-  transition:all 0.25s;cursor:pointer;
+  padding:1rem 2.2rem;background:transparent;color:var(--ink);
+  border:1.5px solid rgba(26,18,8,0.3);border-radius:4px;
+  font-family:var(--sans);font-size:0.88rem;font-weight:600;letter-spacing:0.02em;
+  transition:all 0.25s;cursor:pointer;display:inline-block;
 }
-.btn-outline-terra:hover{border-color:var(--terra);background:rgba(196,98,58,0.05);}
+.btn-outline-terra:hover{border-color:var(--terra);color:var(--terra);background:rgba(196,98,58,0.04);}
 .hero-scroll-hint{
   position:absolute;bottom:2.5rem;right:2.5rem;
   font-family:var(--mono);font-size:0.55rem;letter-spacing:0.15em;
@@ -221,54 +222,100 @@ h1.hero-h .line-sub{
 .s-h.on-dark em{color:var(--terra2);}
 
 /* ───── MY STORY ───── */
-#story{
-  display:grid;grid-template-columns:1fr 1fr;
-  background:var(--white);
+/* ── MERGED STORY SECTION ── */
+#story { background: var(--white); }
+
+/* Top strip — 3 columns */
+.story-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 1px solid rgba(26,18,8,0.08);
 }
-.story-left{
-  padding:4rem 4rem;
-  border-right:1px solid rgba(26,18,8,0.08);
+.story-strip-text {
+  padding: 3.5rem 3rem;
+  border-right: 1px solid rgba(26,18,8,0.08);
 }
-.story-body{
-  margin-top:2.5rem;
-  font-size:1.05rem;color:var(--smoke);line-height:1.95;
+.story-strip-body {
+  padding: 3.5rem 3rem;
+  border-right: 1px solid rgba(26,18,8,0.08);
 }
-.story-body p{margin-bottom:1rem;}
-.story-body p:last-child{margin-bottom:0;}
-.story-body strong{color:var(--ink);font-weight:600;}
-.story-pull{
-  margin:2rem 0;padding-left:1.5rem;
-  border-left:3px solid var(--terra);
-  font-family:var(--serif);font-size:1.3rem;font-style:italic;
-  color:var(--ink);line-height:1.5;
+.story-strip-body p {
+  font-size: 0.92rem; color: var(--smoke); line-height: 1.85; margin-bottom: 1rem;
+}
+.story-strip-body p:last-child { margin-bottom: 0; }
+.story-strip-body strong { color: var(--ink); font-weight: 600; }
+.story-strip-quote { padding: 3.5rem 3rem; }
+.story-big-q {
+  font-family: var(--serif); font-size: 1.15rem; font-style: italic;
+  color: var(--ink); line-height: 1.6; border-left: 3px solid var(--terra);
+  padding-left: 1.2rem;
+}
+.story-sectors { margin-top: 0; }
+.domain-list { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
+.domain-tag {
+  padding: 0.35rem 0.85rem; background: var(--paper);
+  border: 1px solid rgba(26,18,8,0.1); border-radius: 100px;
+  font-size: 0.75rem; color: var(--ink2); transition: all 0.2s;
+}
+.domain-tag:hover { background: var(--terra); color: var(--white); border-color: var(--terra); }
+
+/* Stats row */
+.story-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid rgba(26,18,8,0.08);
+  background: var(--paper);
+}
+.story-stat-item {
+  padding: 2rem 3rem;
+  border-right: 1px solid rgba(26,18,8,0.08);
+  display: flex; flex-direction: column; gap: 0.3rem;
+}
+.story-stat-item:last-child { border-right: none; }
+.story-stat-num {
+  font-family: var(--serif); font-size: 3rem; font-weight: 900;
+  color: var(--terra); line-height: 1; letter-spacing: -0.03em;
+}
+.story-stat-lbl {
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--mist);
 }
 
-.story-right{
-  padding:4rem 4rem;
-  display:flex;flex-direction:column;justify-content:space-between;gap:2rem;
+/* Moment cards */
+.story-moments {
+  display: grid; grid-template-columns: 1fr 1fr;
 }
-.fact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(26,18,8,0.08);margin-top:1.5rem;}
-.fact-card{
-  background:var(--white);padding:2rem 1.5rem;
-  display:flex;flex-direction:column;gap:0.3rem;
-  transition:background 0.3s;
+.story-moment-card {
+  padding: 3rem;
+  border-right: 1px solid rgba(26,18,8,0.08);
+  transition: background 0.3s;
 }
-.fact-card:hover{background:var(--paper);}
-.fact-num{
-  font-family:var(--serif);font-size:2.4rem;font-weight:900;
-  color:var(--terra);line-height:1;
+.story-moment-card:last-child { border-right: none; }
+.story-moment-card:hover { background: var(--paper); }
+.moment-eyebrow {
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--terra); margin-bottom: 0.8rem;
 }
-.fact-label{font-size:0.78rem;color:var(--smoke);line-height:1.4;}
-.fact-sub{font-family:var(--mono);font-size:0.55rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--mist);margin-top:0.3rem;}
+.moment-h {
+  font-family: var(--serif); font-size: 1.4rem; font-weight: 700;
+  color: var(--ink); line-height: 1.25; margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+.moment-body {
+  font-size: 0.88rem; color: var(--smoke); line-height: 1.85;
+}
+.moment-body strong { color: var(--ink); font-weight: 600; }
+.moment-body em { font-style: italic; color: var(--terra); }
 
-.story-domains{margin-top:2rem;}
-.domain-list{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem;}
-.domain-tag{
-  padding:0.45rem 1rem;background:var(--paper);
-  border:1px solid rgba(26,18,8,0.1);border-radius:100px;
-  font-size:0.78rem;color:var(--ink2);transition:all 0.2s;
+/* Responsive */
+@media(max-width:960px){
+  .story-strip { grid-template-columns: 1fr; }
+  .story-strip-text,.story-strip-body,.story-strip-quote { padding: 2.5rem 2rem; border-right: none; border-bottom: 1px solid rgba(26,18,8,0.08); }
+  .story-strip-quote:last-child { border-bottom: none; }
+  .story-stats { grid-template-columns: repeat(2,1fr); }
+  .story-stat-item { padding: 1.5rem 2rem; }
+  .story-moments { grid-template-columns: 1fr; }
+  .story-moment-card { padding: 2rem; border-right: none; border-bottom: 1px solid rgba(26,18,8,0.08); }
 }
-.domain-tag:hover{background:var(--terra);color:var(--white);border-color:var(--terra);}
 
 /* ───── CAREER ───── */
 #career{background:#0F1A14;padding:4rem 0 0;}
@@ -537,9 +584,7 @@ footer{
   .hero-img-side{height:55vw;max-height:400px;}
   .hero-text-side{padding:3rem 2rem 4rem;}
   .hero-scroll-hint{display:none;}
-  #story{grid-template-columns:1fr;}
-  .story-left,.story-right{padding:4rem 2rem;}
-  .fact-grid{grid-template-columns:1fr 1fr;}
+  .story-stats{grid-template-columns:repeat(2,1fr);}
   #career .s-header{padding:0 2rem 2.5rem;}
   .career-row{grid-template-columns:120px 1fr;}
   .cr-right{padding:2rem 1.5rem;}
@@ -581,7 +626,6 @@ footer{
   </button>
   <ul class="nav-menu" id="navMenu">
     <li><a href="#story">My Story</a></li>
-    <li><a href="#about">About Me</a></li>
     <li><a href="#career">Journey</a></li>
     <li><a href="#builds">Builds</a></li>
     <li><a href="#voices">Voices</a></li>
@@ -637,99 +681,73 @@ footer{
   <div class="strip-stat">
     <div class="strip-num">4</div>
     <div class="strip-lbl">Products shipped</div>
-    <div class="strip-ctx">Real tools solving real problems — from civic tech to real estate</div>
-  </div>
-</div>
-
-<!-- MY STORY -->
+    <div class="strip-ctx">Real tools solving real problems — from civic tech to real estate<<!-- MY STORY & ABOUT -->
 <section id="story">
-  <div class="story-left reveal">
-    <div class="s-label">My Story</div>
-    <h2 class="s-h">Not just a career —<br/><em>a journey.</em></h2>
-    <div class="story-body">
-      <p>I didn't plan to become a CX leader. I started in a small health-tech company, answering support tickets and reconciling payments. But I kept noticing the same thing: <strong>the distance between what customers experienced and what companies thought they were delivering.</strong> That gap fascinated me.</p>
-      <div class="story-pull">"I've never been content just running a process. I want to know why it exists, whether it's the right one, and what we can do to make it dramatically better."</div>
-      <p>Over a decade I've built CX teams from scratch, launched products using AI before it was a buzzword, and worked directly with founders at Treebo, Mighty and others to shape not just operations — but the businesses themselves.</p>
-      <p>Today I work at the intersection of <strong>customer experience, technology, and startup operations</strong> — using the best available tools to move fast, automate what can be automated, and make small teams punch above their weight.</p>
-      <p>When I'm not building things for work, I'm usually building things for fun — whether that's VoterTrace (a civic tech tool adopted across Bangalore) or Picamanah (a privacy platform for matrimony ecosystems). <strong>Building is how I think.</strong></p>
+
+  <!-- TOP: three-column intro strip -->
+  <div class="story-strip">
+    <div class="story-strip-text">
+      <div class="s-label">My Story</div>
+      <h2 class="s-h">Bengaluru built me.<br/><em>Startups shaped me.</em></h2>
     </div>
-  </div>
-  <div class="story-right reveal">
-    <div>
-      <div class="s-label">By the numbers</div>
-      <div class="fact-grid">
-        <div class="fact-card">
-          <div class="fact-num">10+</div>
-          <div class="fact-label">Years across fintech, wealthtech, hospitality & healthtech</div>
-          <div class="fact-sub">Experience</div>
-        </div>
-        <div class="fact-card">
-          <div class="fact-num">6</div>
-          <div class="fact-label">Companies, from early-stage startups to growth-stage scale-ups</div>
-          <div class="fact-sub">Companies</div>
-        </div>
-        <div class="fact-card">
-          <div class="fact-num">94%</div>
-          <div class="fact-label">Peak CSAT achieved through systems and culture, not just process</div>
-          <div class="fact-sub">CSAT</div>
-        </div>
-        <div class="fact-card">
-          <div class="fact-num">4</div>
-          <div class="fact-label">Real products designed, built and shipped using AI-assisted development</div>
-          <div class="fact-sub">Products Built</div>
+    <div class="story-strip-body">
+      <p>I grew up watching Bengaluru transform — from a BPO hub to a city where thousands of startups were born. Spending hours on YourStory and TechInAsia, reading funding news, I felt something shift. <strong>A new India was being built, and I wanted to be part of it.</strong></p>
+      <p>I started my career in 2013, answering support tickets. But I kept noticing the gap between what customers experienced and what companies thought they were delivering. That gap still fascinates me — and closing it became my life's work.</p>
+    </div>
+    <div class="story-strip-quote">
+      <div class="story-big-q">"The startup world gave me something corporate life never could — the feeling that every single day, what you do actually matters."</div>
+      <div class="story-sectors">
+        <div class="s-label" style="margin-top:1.5rem;">Sectors I've worked in</div>
+        <div class="domain-list">
+          <span class="domain-tag">WealthTech</span>
+          <span class="domain-tag">Fintech</span>
+          <span class="domain-tag">Hospitality</span>
+          <span class="domain-tag">Investment Tech</span>
+          <span class="domain-tag">Marketplace</span>
+          <span class="domain-tag">Healthtech</span>
+          <span class="domain-tag">Real Estate</span>
         </div>
       </div>
     </div>
-    <div class="story-domains">
-      <div class="s-label">Sectors I've worked in</div>
-      <div class="domain-list">
-        <span class="domain-tag">WealthTech</span>
-        <span class="domain-tag">Fintech</span>
-        <span class="domain-tag">Hospitality Tech</span>
-        <span class="domain-tag">Investment Tech</span>
-        <span class="domain-tag">Marketplace</span>
-        <span class="domain-tag">Healthtech</span>
-        <span class="domain-tag">Real Estate</span>
-        <span class="domain-tag">Civic Tech</span>
-      </div>
+  </div>
+
+  <!-- MIDDLE: stats row -->
+  <div class="story-stats">
+    <div class="story-stat-item">
+      <div class="story-stat-num">10+</div>
+      <div class="story-stat-lbl">Years in startups</div>
+    </div>
+    <div class="story-stat-item">
+      <div class="story-stat-num">6</div>
+      <div class="story-stat-lbl">Companies</div>
+    </div>
+    <div class="story-stat-item">
+      <div class="story-stat-num">40+</div>
+      <div class="story-stat-lbl">People led</div>
+    </div>
+    <div class="story-stat-item">
+      <div class="story-stat-num">94%</div>
+      <div class="story-stat-lbl">Peak CSAT</div>
     </div>
   </div>
+
+  <!-- BOTTOM: two personal moment cards -->
+  <div class="story-moments">
+    <div class="story-moment-card">
+      <div class="moment-eyebrow">The turning point · 2015</div>
+      <h3 class="moment-h">A café interview in HSR Layout that changed everything.</h3>
+      <p class="moment-body">I applied for a customer support role at Treebo Hotels. My final interview was with <strong>Rahul Chaudhary</strong>, co-founder, at a café in HSR Layout. I'd done deep research on Treebo's positioning against OYO. He was impressed — not by my CV, but by the fact that I had <em>thought about the business.</em> He offered me a Senior Operations Executive role on the spot. That moment — of being seen, of someone believing you can do more than you'd dared to apply for — changed the trajectory of everything.</p>
+    </div>
+    <div class="story-moment-card">
+      <div class="moment-eyebrow">The longer journey · 2013–now</div>
+      <h3 class="moment-h">Fast-paced, never comfortable, always worth it.</h3>
+      <p class="moment-body">I've worked with CEOs and CXOs, watched them make calls under pressure. I've been through layoffs — both as an observer and someone helping teams navigate them. I led through COVID, coping personally and professionally at the same time. I've never felt the pull of a structured corporate setup. Startups — the speed, the scrappiness, the sense that nothing is impossible — have always felt like home. Through all of it, <strong>my family has been the constant</strong>.</p>
+    </div>
+  </div>
+
 </section>
 
-<!-- ABOUT ME -->
-<section id="about">
-  <div class="about-inner">
-    <div class="about-left reveal">
-      <div class="s-label">About me</div>
-      <h2 class="s-h">Bengaluru<br/><em>made me.</em></h2>
-      <div class="about-body" style="margin-top:2rem;">
-        <p>I grew up watching Bengaluru transform. The city I knew as a BPO and outsourcing hub slowly became something else entirely — a place where garages turned into offices, where everyday people started companies, where <strong>something electric was happening</strong>.</p>
-        <p>I remember spending hours on YourStory, TechInAsia, and similar platforms, reading about funding rounds and founders. It wasn't just business news to me — it felt like a signal. <strong>A new India was being built, and I wanted to be part of it.</strong></p>
-        <div class="about-pull">"The startup world gave me something corporate life never could — the feeling that every single day, what you do actually matters."</div>
-        <p>I was drawn in by the pace, the people, and the possibility. Working alongside some of the brightest minds in the country, being in the room when real decisions were made, watching CEOs and CXOs navigate pressure in real time — it shaped how I think about work and leadership.</p>
-        <p>I've also experienced the harder side. I've been through layoffs — both as an observer and as someone helping teams navigate them. I led through COVID when every norm we relied on stopped working overnight. Through all of it, <strong>my family has been the constant</strong> — the quiet support that made it possible to keep going.</p>
-        <p>I've never felt the pull of a structured corporate setup. Something about startups — the speed, the scrappiness, the sense that nothing is impossible — has always felt more like home.</p>
-      </div>
-    </div>
-    <div class="about-right reveal">
-      <div class="moment-card">
-        <div class="moment-tag">The turning point</div>
-        <div class="moment-title">A café in HSR Layout changed everything.</div>
-        <div class="moment-body">
-          <p>I had applied for a customer support role at Treebo Hotels. My final interview was with <strong>Rahul Chaudhary</strong>, the co-founder, at a café in HSR Layout. I'd done my homework — read everything I could about Treebo's positioning against OYO, their model, their challenges.</p>
-          <p style="margin-top:0.8rem;">He was impressed. Not by my CV, but by the fact that I had <strong>thought about the business</strong>, not just the job description. He saw something I didn't see in myself yet — and offered me a Senior Operations Executive role instead of the support position I'd applied for.</p>
-          <p style="margin-top:0.8rem;">That moment of being seen — of someone believing you can do more than you thought — is something I carry into how I lead and hire today. <strong>It changed the trajectory of my career.</strong></p>
-        </div>
-      </div>
-      <div class="moment-card">
-        <div class="moment-tag">Early days at Treebo</div>
-        <div class="moment-title">Working with founders shaped my entire approach.</div>
-        <div class="moment-body">
-          <p>At Treebo I worked directly with the Director of CX, the founders, and almost every cross-functional team during the early days. Sitting in on strategy calls, watching how decisions were made under pressure, understanding how a fast-growing company balances vision with reality.</p>
-          <p style="margin-top:0.8rem;">It gave me a confidence I hadn't had before — the belief that <strong>I could operate at any level, in any room</strong>. That foundation has never left me.</p>
-        </div>
-      </div>
-    </div>
+iv>
   </div>
 </section>
 

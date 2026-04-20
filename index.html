@@ -104,10 +104,11 @@ h1.hero-h .sub{
   font-size:clamp(1rem,1.8vw,1.5rem);font-weight:400;font-style:normal;
   color:var(--smoke);display:block;margin-top:0.6em;letter-spacing:-0.01em;line-height:1.4;
 }
-.hero-divider{width:48px;height:2px;background:linear-gradient(90deg,var(--terra),transparent);margin:2rem 0;}
+.hero-divider{width:48px;height:2px;background:linear-gradient(90deg,var(--terra),transparent);margin:1.5rem 0 1.2rem;}
 .hero-intro{
-  font-size:clamp(0.9rem,1.2vw,1rem);color:var(--smoke);
-  line-height:1.85;max-width:460px;position:relative;z-index:1;
+  font-size:clamp(0.9rem,1.1vw,0.98rem);color:var(--smoke);
+  line-height:1.85;max-width:440px;position:relative;z-index:1;
+  padding-top:0.5rem;
 }
 .hero-intro strong{color:var(--ink);font-weight:600;}
 .hero-btns{display:flex;gap:0.8rem;margin-top:2rem;flex-wrap:wrap;position:relative;z-index:1;}
@@ -135,14 +136,17 @@ h1.hero-h .sub{
 /* ── LOGOS STRIP ── */
 #logos{
   background:var(--ink2);padding:1.2rem 2.5rem;
-  display:flex;align-items:center;gap:0;overflow:hidden;
+  display:flex;align-items:center;gap:0;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
 }
+#logos::-webkit-scrollbar{display:none;}
 .logos-label{
   font-family:var(--mono);font-size:0.55rem;letter-spacing:0.14em;
   text-transform:uppercase;color:rgba(255,255,255,0.25);
   white-space:nowrap;margin-right:2.5rem;flex-shrink:0;
 }
-.logos-row{display:flex;align-items:center;gap:3rem;flex-wrap:nowrap;}
+.logos-row{display:flex;align-items:center;gap:3rem;flex-wrap:nowrap;flex-shrink:0;}
 .logo-item{
   height:24px;opacity:0.35;filter:brightness(10);
   transition:opacity 0.2s;flex-shrink:0;
@@ -225,18 +229,7 @@ h1.hero-h .sub{
   font-family:var(--serif);font-size:1.1rem;font-style:italic;
   color:var(--ink);line-height:1.55;margin:1.5rem 0;
 }
-.story-stat-bar{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  background:var(--forest);border-top:2px solid var(--terra);
-}
-.ssb-item{
-  padding:2.2rem 2.5rem;border-right:1px solid rgba(255,255,255,0.08);
-  display:flex;flex-direction:column;gap:0.3rem;
-}
-.ssb-item:last-child{border-right:none;}
-.ssb-num{font-family:var(--serif);font-size:3rem;font-weight:900;color:var(--paper);line-height:1;letter-spacing:-0.03em;}
-.ssb-num span{color:var(--terra2);font-style:italic;}
-.ssb-lbl{font-family:var(--sans);font-size:0.6rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,237,224,0.4);}
+
 .story-moments{display:grid;grid-template-columns:1fr 1fr;}
 .moment-card{
   padding:3rem;border-right:1px solid rgba(26,18,8,0.08);
@@ -491,8 +484,9 @@ footer{
   .hero-img-side img{object-position:center 20%;}
   .hero-text-side{padding:2.5rem 1.5rem 3rem;justify-content:flex-start;}
   .hero-scroll{display:none;}
-  #logos{padding:1rem 1.5rem;}
-  .logos-row{gap:2rem;}
+  #logos{padding:1rem 1.5rem;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .logos-label{display:none;}
+  .logos-row{gap:1.8rem;flex-shrink:0;}
   #stats{grid-template-columns:repeat(2,1fr);}
   .stat-item:nth-child(2){border-right:none;}
   .stat-item:nth-child(3){border-top:1px solid rgba(255,255,255,0.08);}
@@ -614,24 +608,17 @@ footer{
     <div class="story-col reveal">
       <div class="story-body">
         <p>I grew up watching Bengaluru shift from a BPO city to a startup ecosystem. Reading YourStory and TechInAsia late at night, I could feel a new era arriving — and I wanted to be inside it, not watching from the outside.</p>
-        <p>I started in customer operations. What kept me sharp wasn't the tickets I resolved — it was the patterns I noticed. The gap between what customers experienced and what leadership believed they were delivering. <strong>I've been closing that gap, at scale, ever since.</strong></p>
+        <p>I started in customer operations and what kept me sharp wasn't the tickets I resolved — it was the patterns I noticed. The gap between what customers experienced and what leadership believed they were delivering. <strong>I've been closing that gap, at scale, ever since.</strong></p>
         <div class="story-pull">"The best operators aren't process managers. They're builders who happen to be systematic."</div>
       </div>
     </div>
     <div class="story-col reveal">
       <div class="story-body">
-        <p>Over the past decade, I've led teams of 40+, owned CX and operations across multiple verticals, built infrastructure that gives founders confidence, and worked shoulder-to-shoulder with CEOs through growth, crisis, and everything in between.</p>
+        <p>Over the past decade I've led teams of 40+, owned CX and operations across multiple verticals, built infrastructure that gives founders confidence, and worked shoulder-to-shoulder with CEOs through growth, crisis, and everything in between.</p>
         <p>I've never been drawn to the structure of a large corporation. What motivates me is <strong>ownership</strong> — being trusted to build something from scratch, make decisions that matter, and see the results show up in the numbers.</p>
         <p>My family has been the constant through all of it — through layoffs, through COVID, through every high and low that comes with betting on fast-growing companies.</p>
       </div>
     </div>
-  </div>
-
-  <div class="story-stat-bar">
-    <div class="ssb-item"><div class="ssb-num">10<span>+</span></div><div class="ssb-lbl">Years in startups</div></div>
-    <div class="ssb-item"><div class="ssb-num">6</div><div class="ssb-lbl">Companies</div></div>
-    <div class="ssb-item"><div class="ssb-num">40<span>+</span></div><div class="ssb-lbl">People led</div></div>
-    <div class="ssb-item"><div class="ssb-num">94<span>%</span></div><div class="ssb-lbl">Peak CSAT delivered</div></div>
   </div>
 
   <div class="story-moments">
@@ -640,15 +627,15 @@ footer{
       <div class="moment-title">A café in HSR Layout that changed everything.</div>
       <div class="moment-body">
         <p>I applied for a customer support role at Treebo Hotels. My final interview was with <strong>Rahul Chaudhary</strong>, co-founder, at a café in HSR Layout.</p>
-        <p>I hadn't just prepared for the interview — I'd studied the business. Treebo's positioning against OYO, their risks, their model. Rahul noticed. He offered me a <em>Senior Operations Executive role</em> instead of the support position I'd applied for.</p>
-        <p>That moment — of being seen not for my title but for my thinking — shaped how I approach every role since. I show up as an operator and a strategist, regardless of what the job description says.</p>
+        <p>I had done my research — competitor landscape, customer experience gaps, how Treebo was positioning itself. Rahul noticed. He offered me a <em>Senior Operations Executive role</em> instead of the support position I had applied for.</p>
+        <p>That moment — of being seen not for my title but for my thinking — shaped how I approach every role since. I show up prepared, with a point of view, regardless of what the job description says.</p>
       </div>
     </div>
     <div class="moment-card reveal">
       <div class="moment-tag">The longer arc · 2013–now</div>
       <div class="moment-title">Fast-moving companies. Real decisions. Real stakes.</div>
       <div class="moment-body">
-        <p>I've worked with founders navigating their Series A. I've sat in rooms where layoff decisions were made and helped teams land with dignity. I led operations through COVID — coping personally while keeping the business running.</p>
+        <p>Working in fast-growing startups means wearing many hats — and sometimes bearing the weight of hard moments. I've been through layoffs as a manager, supporting teams through uncertainty while keeping operations steady. I led through COVID, balancing personal and professional pressure at the same time.</p>
         <p>Startups test you differently. The speed, the ambiguity, the expectation that you figure it out — that's the environment I've always performed best in.</p>
         <p>What I've built across these years: systems that scale, teams that stay, customers that return, and metrics that compound. That's the thread running through every chapter.</p>
       </div>
@@ -684,7 +671,7 @@ footer{
     <div class="hire-card">
       <div class="hire-card-role">Customer Growth & Retention</div>
       <div class="hire-card-title">Connect CX to revenue and retention.</div>
-      <div class="hire-card-body">From lifecycle campaigns and lead nurturing workflows to conversion funnel analysis and churn reduction — I've run growth initiatives that generated 25K+ leads and measurably improved customer retention.</div>
+      <div class="hire-card-body">From lifecycle campaigns and lead nurturing workflows to conversion funnel analysis and churn reduction — As part of the strategy and execution team, I contributed to campaigns that generated 25K+ leads and measurably improved customer retention.</div>
       <div class="hire-card-fit">→ Best for fintech or subscription businesses where customer lifetime value is the core metric.</div>
     </div>
   </div>
@@ -704,7 +691,7 @@ footer{
     <div class="glance-item"><div class="glance-key">Peak CSAT delivered</div><div class="glance-val">94%+ (from 46%)</div></div>
     <div class="glance-item"><div class="glance-key">Functions owned</div><div class="glance-val">CX · Ops · Growth · Compliance · Product Collaboration</div></div>
     <div class="glance-item"><div class="glance-key">Company stage</div><div class="glance-val">Seed · Series A · Series B</div></div>
-    <div class="glance-item"><div class="glance-key">Seniority target</div><div class="glance-val">Head of CX · Ops Lead · Founding Operator</div></div>
+    <div class="glance-item"><div class="glance-key">Seniority target</div><div class="glance-val">Head of CX · Ops Lead · Chief of Staff · Founding Operator</div></div>
     <div class="glance-item"><div class="glance-key">Open to</div><div class="glance-val">Full-time · Advisory · Fractional</div></div>
   </div>
 </section>
@@ -911,11 +898,11 @@ footer{
         <div class="build-accent"></div>
         <div class="build-icon">🏢</div>
         <div class="build-tag-row"><span class="build-tag">Real Estate · Client Work</span></div>
-        <div class="build-name">Proprush</div>
+        <div class="build-name">ProprRush</div>
         <div class="build-desc">A legacy real estate developer had no online presence — no website, no credibility signals, no way to capture leads. They were losing business to competitors who'd simply figured out the internet. I designed and shipped their website, deployed it on GitHub Pages, and configured a custom domain through GoDaddy. First enquiry came in within the week.</div>
       </div>
       <div class="build-bottom">
-        <a class="build-link" href="https://proprush.in" target="_blank" rel="noopener">Visit Proprush →</a>
+        <a class="build-link" href="https://proprrush.com" target="_blank" rel="noopener">Visit proprrush.com →</a>
         <span class="build-type">Client Project</span>
       </div>
     </div>

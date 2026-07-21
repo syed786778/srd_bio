@@ -56,7 +56,9 @@ a{color:inherit;text-decoration:none;}
 
 /* ── HERO ── */
 #hero{
-  min-height:100svh;
+  height:100svh;
+  min-height:580px;
+  max-height:900px;
   display:grid;grid-template-columns:1fr 1fr;
   position:relative;overflow:hidden;
 }
@@ -81,7 +83,7 @@ a{color:inherit;text-decoration:none;}
 }
 .hero-text-side{
   display:flex;flex-direction:column;justify-content:center;
-  padding:6rem 3.5rem 3rem;background:var(--paper);position:relative;
+  padding:5rem 3.5rem 2.5rem;background:var(--paper);position:relative;
   overflow:hidden;
 }
 .hero-text-side::before{
@@ -128,12 +130,12 @@ h1.hero-h .sub{
 }
 .btn-s:hover{border-color:var(--terra);color:var(--terra);}
 .hero-scroll{
-  position:absolute;bottom:2rem;right:2rem;
-  font-family:var(--mono);font-size:0.52rem;letter-spacing:0.14em;
+  position:absolute;bottom:1.5rem;right:1.5rem;
+  font-family:var(--mono);font-size:0.5rem;letter-spacing:0.12em;
   text-transform:uppercase;color:var(--mist);
-  writing-mode:vertical-rl;display:flex;align-items:center;gap:0.6rem;
+  writing-mode:vertical-rl;display:flex;align-items:center;gap:0.5rem;
 }
-.hero-scroll::after{content:'';width:1px;height:36px;background:linear-gradient(to bottom,var(--mist),transparent);}
+.hero-scroll::after{content:'';width:1px;height:30px;background:linear-gradient(to bottom,var(--mist),transparent);}
 
 /* ── LOGOS STRIP ── */
 #logos{
@@ -478,13 +480,12 @@ footer{
   #stats{grid-template-columns:repeat(3,1fr);}
 }
 @media(max-width:960px){
-  #hero{grid-template-columns:1fr;height:auto;min-height:auto;}
+  #hero{grid-template-columns:1fr;height:auto;min-height:auto;max-height:none;}
   .hero-img-side{
-    height:56vw;max-height:360px;
-    /* MOBILE FIX: show face not top of head */
+    height:60vw;min-height:220px;max-height:320px;
   }
-  .hero-img-side img{object-position:center 20%;}
-  .hero-text-side{padding:2.5rem 1.5rem 3rem;justify-content:flex-start;}
+  .hero-img-side img{object-position:center 18%;}
+  .hero-text-side{padding:2rem 1.5rem 2.5rem;justify-content:flex-start;}
   .hero-scroll{display:none;}
   #logos{padding:1rem 1.5rem;overflow-x:auto;-webkit-overflow-scrolling:touch;}
   .logos-label{display:none;}
@@ -522,7 +523,7 @@ footer{
   .nav-ham{display:block;z-index:300;position:relative;}
 }
 @media(max-width:580px){
-  .hero-img-side{height:65vw;max-height:300px;}
+  .hero-img-side{height:58vw;min-height:200px;max-height:260px;}
   .hero-img-side img{object-position:center 15%;}
   .edu-grid{grid-template-columns:1fr;}
   .glance-grid{grid-template-columns:1fr;}
@@ -900,12 +901,12 @@ footer{
         <div class="build-accent"></div>
         <div class="build-icon">🏢</div>
         <div class="build-tag-row"><span class="build-tag">Real Estate · Client Work</span></div>
-        <div class="build-name">ProprRush</div>
+        <div class="build-name">Proprush</div>
         <div class="build-desc">A legacy real estate developer had no online presence — no website, no credibility signals, no way to capture leads. They were losing business to competitors who'd simply figured out the internet. I designed and shipped their website, deployed it on GitHub Pages, and configured a custom domain through GoDaddy. First enquiry came in within the week.</div>
       </div>
       <div class="build-bottom">
-        <a class="build-link" href="https://proprrush.com" target="_blank" rel="noopener">Visit proprrush.com →</a>
-        <span class="build-type">Client Project</span>
+        <a class="build-link" href="https://proprush.in" target="_blank" rel="noopener">Visit Proprush.in →</a>
+        <span class="build-type">Freelance Project</span>
       </div>
     </div>
   </div>

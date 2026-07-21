@@ -56,12 +56,13 @@ a{color:inherit;text-decoration:none;}
 
 /* ── HERO ── */
 #hero{
-  height:100svh;min-height:600px;
+  min-height:100svh;
   display:grid;grid-template-columns:1fr 1fr;
   position:relative;overflow:hidden;
 }
 .hero-img-side{
   position:relative;background:var(--forest);overflow:hidden;
+  min-height:100%;
 }
 .hero-img-side img{
   width:100%;height:100%;
@@ -80,7 +81,8 @@ a{color:inherit;text-decoration:none;}
 }
 .hero-text-side{
   display:flex;flex-direction:column;justify-content:center;
-  padding:7rem 4rem 4rem;background:var(--paper);position:relative;
+  padding:6rem 3.5rem 3rem;background:var(--paper);position:relative;
+  overflow:hidden;
 }
 .hero-text-side::before{
   content:'';position:absolute;inset:0;
@@ -95,14 +97,14 @@ a{color:inherit;text-decoration:none;}
 }
 .hero-label::before{content:'';width:24px;height:2px;background:var(--terra);}
 h1.hero-h{
-  font-family:var(--serif);font-size:clamp(3.2rem,6vw,6rem);
+  font-family:var(--serif);font-size:clamp(2.8rem,4.8vw,5rem);
   font-weight:900;line-height:1.0;letter-spacing:-0.04em;color:var(--ink);
   position:relative;z-index:1;
 }
 h1.hero-h .accent{font-style:italic;color:var(--terra);font-weight:400;display:block;}
 h1.hero-h .sub{
-  font-size:clamp(1rem,1.8vw,1.5rem);font-weight:400;font-style:normal;
-  color:var(--smoke);display:block;margin-top:0.6em;letter-spacing:-0.01em;line-height:1.4;
+  font-size:clamp(0.9rem,1.4vw,1.15rem);font-weight:400;font-style:normal;
+  color:var(--smoke);display:block;margin-top:0.5em;letter-spacing:-0.01em;line-height:1.4;
 }
 .hero-divider{width:48px;height:2px;background:linear-gradient(90deg,var(--terra),transparent);margin:1.5rem 0 1.2rem;}
 .hero-intro{
@@ -111,7 +113,7 @@ h1.hero-h .sub{
   padding-top:0.5rem;
 }
 .hero-intro strong{color:var(--ink);font-weight:600;}
-.hero-btns{display:flex;gap:0.8rem;margin-top:2rem;flex-wrap:wrap;position:relative;z-index:1;}
+.hero-btns{display:flex;gap:0.8rem;margin-top:1.5rem;flex-wrap:wrap;position:relative;z-index:1;}
 .btn-p{
   padding:0.9rem 2rem;background:var(--terra);color:var(--white);border-radius:4px;
   font-family:var(--sans);font-size:0.88rem;font-weight:600;

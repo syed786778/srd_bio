@@ -314,7 +314,7 @@ h1.hero-h .sub{
 .btn-white:hover{background:var(--paper2);transform:translateY(-2px);}
 
 /* ── BUILDS ── */
-#builds{background:var(--paper2);padding:4rem;}
+#builds{background:var(--paper2);padding:3.5rem 4rem;}
 .builds-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem;}
 .build-card{
   background:var(--white);border-radius:6px;
@@ -506,7 +506,9 @@ footer{
   .cr-sector{margin-top:0;padding-top:0;border-top:none;}
   .cr-right{padding:1.5rem 2rem;}
   .cr-pts{grid-template-columns:1fr;}
-  .builds-grid{grid-template-columns:1fr;}
+  .builds-grid{grid-template-columns:1fr!important;}
+  .build-card[style*="grid-column"]{grid-column:span 1!important;}
+  .build-top[style*="grid-template-columns"]{grid-template-columns:1fr!important;}
   .voice-item{grid-template-columns:1fr;gap:0.8rem;}
   .v-co{justify-self:start;}
   .skills-grid{grid-template-columns:1fr;}
@@ -850,65 +852,85 @@ footer{
 <section id="builds">
   <div class="reveal">
     <div class="s-label">Things I've built</div>
-    <h2 class="s-h">From idea to live.<br/><em>Built as an operator.</em></h2>
-    <p style="font-size:0.88rem;color:var(--smoke);margin-top:1rem;max-width:520px;line-height:1.8;">Not a developer. Someone who identifies real problems and finds the fastest, most credible way to solve them.</p>
+    <h2 class="s-h">Real problems.<br/><em>Real solutions.</em></h2>
+    <p style="font-size:0.85rem;color:var(--smoke);margin-top:0.8rem;max-width:500px;line-height:1.75;">I identify gaps, figure out what's actually needed, and build something that works — without waiting for a full team or a perfect brief.</p>
   </div>
-  <div class="builds-grid reveal">
-    <div class="build-card c1">
-      <div class="build-top">
-        <div class="build-accent"></div>
-        <div class="build-icon">🔒</div>
-        <div class="build-tag-row"><span class="build-tag">Privacy · Consumer Product</span></div>
-        <div class="build-name">Picamanah</div>
-        <div class="build-desc">Personal images were being shared without consent in India's matrimony ecosystem — copied, forwarded, misused. No product existed that let people share photos safely with controlled access. I built Picamanah: a privacy-first platform with consent-based access controls. People decide who sees their photos, and under what terms. This wasn't a side project. It was a real problem I kept hearing about — and I built the solution.</div>
+  <div class="builds-grid reveal" style="grid-template-columns:repeat(3,1fr);">
+
+    <div class="build-card c1" style="grid-column:span 2;">
+      <div class="build-top" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+        <div>
+          <div class="build-accent" style="margin:-2rem -2.5rem 1.5rem;grid-column:span 2;"></div>
+          <div class="build-icon">🕌</div>
+          <div class="build-tag-row"><span class="build-tag">Travel Tech · Consumer Platform</span></div>
+          <div class="build-name">UmrahNow</div>
+        </div>
+        <div style="display:flex;flex-direction:column;justify-content:flex-end;">
+          <div class="build-desc">The Umrah travel space in India is largely unorganised — pilgrims navigate it with little reliable information, unverified agents, and no centralised resource. UmrahNow is a platform I built to change that: comprehensive Umrah guidance covering travel, visa, hotels, shopping, and more — paired with a directory of verified and vetted service providers. The goal is to make the journey less stressful and more trustworthy for every pilgrim, regardless of where they're from.</div>
+        </div>
       </div>
       <div class="build-bottom">
-        <a class="build-link" href="https://picamanah.space/" target="_blank" rel="noopener">Visit picamanah.space →</a>
-        <span class="build-type">Live Product</span>
+        <a class="build-link" href="https://umrahnow.in" target="_blank" rel="noopener">Visit umrahnow.in →</a>
+        <span class="build-type">Live Platform</span>
       </div>
     </div>
 
     <div class="build-card c2">
       <div class="build-top">
         <div class="build-accent"></div>
-        <div class="build-icon">🗳️</div>
-        <div class="build-tag-row"><span class="build-tag">Civic Tech · Community Tool</span></div>
-        <div class="build-name">VoterTrace</div>
-        <div class="build-desc">Ahead of elections, people in my community couldn't find themselves on electoral rolls — the data existed, but accessing it was opaque and slow. I built VoterTrace: an OCR-powered search tool that extracts and fuzzy-matches names against electoral roll datasets. It spread organically across Bangalore communities and was used for real voter awareness drives. One weekend. One real problem. One working solution.</div>
+        <div class="build-icon">🔒</div>
+        <div class="build-tag-row"><span class="build-tag">Privacy · Consumer</span></div>
+        <div class="build-name">Picamanah</div>
+        <div class="build-desc">Personal images were being shared without consent in India's matrimony ecosystem. I built a privacy-first platform with consent-based access controls — people decide who sees their photos, and under what terms.</div>
       </div>
       <div class="build-bottom">
-        <a class="build-link" href="https://syed786778.github.io/voter_trace/" target="_blank" rel="noopener">Try VoterTrace →</a>
-        <span class="build-type">Community Tool</span>
+        <a class="build-link" href="https://picamanah.space/" target="_blank" rel="noopener">Visit site →</a>
+        <span class="build-type">Live Product</span>
       </div>
     </div>
 
     <div class="build-card c3">
       <div class="build-top">
         <div class="build-accent"></div>
-        <div class="build-icon">🧭</div>
-        <div class="build-tag-row"><span class="build-tag">WealthTech · Internal Product</span></div>
-        <div class="build-name">Retirement Engine</div>
-        <div class="build-desc">The challenge: how do you engage customers about retirement planning before they feel ready to ask about it? I built an internal tool at Mighty that assesses each customer's retirement readiness based on their profile and behaviour, and triggers contextual outreach at the right moment. Result: meaningfully improved lead qualification quality and deeper engagement with the Retirement Planning vertical.</div>
+        <div class="build-icon">🗳️</div>
+        <div class="build-tag-row"><span class="build-tag">Civic Tech · Community</span></div>
+        <div class="build-name">VoterTrace</div>
+        <div class="build-desc">People in my community couldn't find themselves on electoral rolls before elections. Built an OCR-powered search tool with fuzzy matching — spread organically across Bangalore and used for real voter awareness drives.</div>
       </div>
       <div class="build-bottom">
-        <span class="build-link" style="opacity:0.4;cursor:default;">Internal Tool · Mighty</span>
-        <span class="build-type">Work Project</span>
+        <a class="build-link" href="https://syed786778.github.io/voter_trace/" target="_blank" rel="noopener">Try it →</a>
+        <span class="build-type">Community Tool</span>
       </div>
     </div>
 
     <div class="build-card c4">
       <div class="build-top">
         <div class="build-accent"></div>
-        <div class="build-icon">🏢</div>
-        <div class="build-tag-row"><span class="build-tag">Real Estate · Client Work</span></div>
-        <div class="build-name">Proprush</div>
-        <div class="build-desc">A legacy real estate developer had no online presence — no website, no credibility signals, no way to capture leads. They were losing business to competitors who'd simply figured out the internet. I designed and shipped their website, deployed it on GitHub Pages, and configured a custom domain through GoDaddy. First enquiry came in within the week.</div>
+        <div class="build-icon">🧭</div>
+        <div class="build-tag-row"><span class="build-tag">WealthTech · Internal</span></div>
+        <div class="build-name">Retirement Engine</div>
+        <div class="build-desc">How do you engage customers about retirement before they feel ready to ask? Built an internal tool at Mighty that assesses readiness and triggers contextual outreach — improved lead qualification and engagement depth.</div>
       </div>
       <div class="build-bottom">
-        <a class="build-link" href="https://proprush.in" target="_blank" rel="noopener">Visit Proprush →</a>
+        <span class="build-link" style="opacity:0.4;cursor:default;">Internal · Mighty</span>
+        <span class="build-type">Work Project</span>
+      </div>
+    </div>
+
+    <div class="build-card c1">
+      <div class="build-top">
+        <div class="build-accent"></div>
+        <div class="build-icon">🏢</div>
+        <div class="build-tag-row"><span class="build-tag">Real Estate · Client</span></div>
+        <div class="build-name">ProprRush</div>
+        <div class="build-desc">A legacy real estate developer had no online presence — no website, no credibility, no way to capture leads. Designed and shipped a full site, deployed on GitHub Pages with a custom GoDaddy domain. First enquiry came within the week.</div>
+      </div>
+      <div class="build-bottom">
+        <a class="build-link" href="https://proprrush.com" target="_blank" rel="noopener">Visit site →</a>
         <span class="build-type">Client Project</span>
       </div>
     </div>
+
   </div>
 </section>
 
